@@ -147,8 +147,9 @@ Other defines
 						"Copyright " YEAR " Geoff Graham\r\n" 
 #endif
 #ifdef OLIMEX
-#define MES_SIGNON  "\rDMBasic Build Date: " __DATE__ " Time:" __TIME__ "\r\n"\
-		    "www.olimex.com, Based On MMBasic By Geoff Graham\r\n"
+#define MES_SIGNON  "\rDMBasic for DuinoMite www.olimex.com\r\n"\
+                    "Build: " __DATE__ " " __TIME__ "\r\n"\
+		    "Based On MMBasic By Geoff Graham\r\n"
 #endif
 #define MES_EXCEPTION   "\rException code %d at 0x%X\r\n"\
 			"An internal error was trapped (sorry).\r\n"\
@@ -441,7 +442,8 @@ void __ISR(_TIMER_1_VECTOR, ipl4) T1Interrupt(void) {
                 if (USB_RxBuf[i] == 3 && !FileXfr) // check for CTRL-C
                     MMAbort = true; // and if so tell BASIC to stop running
                 if (PrintSignonToUSB) {
-                    strncpy(USB_TxBuf[USB_Current_TxBuf], MES_SIGNON, USB_TX_BUFFER_SIZE); // if first time send signon msg
+//                  strncpy(USB_TxBuf[USB_Current_TxBuf], MES_SIGNON, USB_TX_BUFFER_SIZE); // if first time send signon msg
+                    strncpy(USB_TxBuf[USB_Current_TxBuf], "DM-BASIC USB CONSOLE\r\n", USB_TX_BUFFER_SIZE); // if first time send signon msg
                     USB_NbrCharsInTxBuf = strlen(USB_TxBuf[USB_Current_TxBuf]);
                     PrintSignonToUSB = false;
                 }
@@ -1251,7 +1253,7 @@ void _general_exception_handler(void) {
     _excep_code = (_excep_code & 0x0000007C) >> 2;
 
     debughalt(); // Break here when compiling under a Debug build configuration
-    SoftReset(); // this will restart the processor – only works when not in debug
+    SoftReset(); // this will restart the processor ? only works when not in debug
 }
 
 

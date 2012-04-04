@@ -571,11 +571,11 @@ kseg0 Program-Memory Usage
 section                    address  length [bytes]      (dec)  Description
 -------                 ----------  -------------------------  -----------
 .text                   0x9d004a00        0x60eb8      396984  Application's executable code 
-.rodata                 0x9d0658b8         0x68f4       26868  Read-only constant data 
-.eh_frame               0x9d06c1ac           0x50          80  Stack unwind info 
-.data                   0x9d06c1fc         0x12f4        4852  Data-initialization template 
-.sdata                  0x9d06d4f0           0x54          84  Small data-initialization template 
-      Total kseg0_program_mem used  :     0x68b44      428868  84.9% of 0x7b600
+.rodata                 0x9d0658b8         0x690c       26892  Read-only constant data 
+.eh_frame               0x9d06c1c4           0x50          80  Stack unwind info 
+.data                   0x9d06c214         0x12f4        4852  Data-initialization template 
+.sdata                  0x9d06d508           0x54          84  Small data-initialization template 
+      Total kseg0_program_mem used  :     0x68b5c      428892  84.9% of 0x7b600
 
 kseg0 Boot-Memory Usage
 section                    address  length [bytes]      (dec)  Description
@@ -608,7 +608,7 @@ section                    address  length [bytes]      (dec)  Description
 .bev_excpt              0x9d004380           0x10          16  BEV-Exception handler 
          Total kseg1_boot_mem used  :        0x20          32  2.7% of 0x490
         --------------------------------------------------------------------------
-         Total Program Memory used  :     0x68db4      429492  83.7% of 0x7d400
+         Total Program Memory used  :     0x68dcc      429516  83.7% of 0x7d400
         --------------------------------------------------------------------------
 
 
@@ -2337,42 +2337,42 @@ LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../
  .text          0x9d052210      0x4c4 build/OLIMEX/production/_ext/179026188/Keyboard.o
                 0x9d052210                initKeyboard
                 0x9d05228c                CNInterrupt
- .text          0x9d0526d4     0x12f8 build/OLIMEX/production/_ext/1728301206/Main.o
+ .text          0x9d0526d4     0x12b8 build/OLIMEX/production/_ext/1728301206/Main.o
                 0x9d0526d4                main
                 0x9d052d4c                mySetLineCodingHandler
                 0x9d052d80                T1Interrupt
-                0x9d0530a8                USBCBSuspend
-                0x9d0530b0                USBCBWakeFromSuspend
-                0x9d0530b8                USBCB_SOF_Handler
-                0x9d0530c0                USBCBErrorHandler
-                0x9d0530c8                USBCBCheckOtherReq
-                0x9d0530ec                USBCBStdSetDscHandler
-                0x9d0530f4                USBCBInitEP
-                0x9d053124                USBCBSendResume
-                0x9d0531b8                USER_USB_CALLBACK_EVENT_HANDLER
-                0x9d053228                MMInkeyTask
-                0x9d0532c4                MMInkey
-                0x9d053728                MMgetchar
-                0x9d053790                MMputchar
-                0x9d053814                USBPutchar
-                0x9d0538ec                MMPrintString
-                0x9d053990                _general_exception_handler
- .text          0x9d0539cc     0x16cc build/OLIMEX/production/_ext/2129892895/RTC.o
-                0x9d0539cc                dayofweek
-                0x9d053a64                cmd_SDEnable
-                0x9d053ac0                cmd_SDDisable
-                0x9d053b08                cmd_mmss
-                0x9d053b4c                fun_mmss
-                0x9d053ba8                WriteRTCC
-                0x9d053eac                ReadRTCC
-                0x9d053ffc                I2CRXByte
-                0x9d0540b4                ReadRTC
-                0x9d05481c                WriteRTC
-                0x9d054acc                PrintDateTime
-                0x9d054c94                cmd_sleep
-                0x9d054f68                fun_mmsleep
-                0x9d054f8c                RtccIsr
- *fill*         0x9d055098      0xf68 00000000
+                0x9d053068                USBCBSuspend
+                0x9d053070                USBCBWakeFromSuspend
+                0x9d053078                USBCB_SOF_Handler
+                0x9d053080                USBCBErrorHandler
+                0x9d053088                USBCBCheckOtherReq
+                0x9d0530ac                USBCBStdSetDscHandler
+                0x9d0530b4                USBCBInitEP
+                0x9d0530e4                USBCBSendResume
+                0x9d053178                USER_USB_CALLBACK_EVENT_HANDLER
+                0x9d0531e8                MMInkeyTask
+                0x9d053284                MMInkey
+                0x9d0536e8                MMgetchar
+                0x9d053750                MMputchar
+                0x9d0537d4                USBPutchar
+                0x9d0538ac                MMPrintString
+                0x9d053950                _general_exception_handler
+ .text          0x9d05398c     0x16cc build/OLIMEX/production/_ext/2129892895/RTC.o
+                0x9d05398c                dayofweek
+                0x9d053a24                cmd_SDEnable
+                0x9d053a80                cmd_SDDisable
+                0x9d053ac8                cmd_mmss
+                0x9d053b0c                fun_mmss
+                0x9d053b68                WriteRTCC
+                0x9d053e6c                ReadRTCC
+                0x9d053fbc                I2CRXByte
+                0x9d054074                ReadRTC
+                0x9d0547dc                WriteRTC
+                0x9d054a8c                PrintDateTime
+                0x9d054c54                cmd_sleep
+                0x9d054f28                fun_mmsleep
+                0x9d054f4c                RtccIsr
+ *fill*         0x9d055058      0xfa8 00000000
  .text          0x9d056000     0x3000 build/OLIMEX/production/_ext/1728301206/Setup.o
                 0x9d056000                SetupInFlash
                 0x9d057000                SaveSetup
@@ -2845,7 +2845,7 @@ LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../
  *(.mips16.call.*)
                 0x9d0658b8                _text_end = .
 
-.rodata         0x9d0658b8     0x68f4
+.rodata         0x9d0658b8     0x690c
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.4
                 0x9d0658b8      0x699 build/OLIMEX/production/_ext/2012694729/Commands.o
@@ -2958,76 +2958,77 @@ LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../
  .rodata        0x9d06ab8c       0x24 build/OLIMEX/production/_ext/1728301206/Main.o
                 0x9d06ab8c                inq_resp
  .rodata.str1.4
-                0x9d06abb0       0xfb build/OLIMEX/production/_ext/1728301206/Main.o
-                                0x100 (size before relaxing)
- *fill*         0x9d06acab        0x1 00
+                0x9d06abb0      0x10f build/OLIMEX/production/_ext/1728301206/Main.o
+                                0x114 (size before relaxing)
+ *fill*         0x9d06acbf        0x1 00
  .rodata.str1.4
-                0x9d06acac       0xf5 build/OLIMEX/production/_ext/2129892895/RTC.o
+                0x9d06acc0       0xf5 build/OLIMEX/production/_ext/2129892895/RTC.o
                                  0xf8 (size before relaxing)
- *fill*         0x9d06ada1        0x3 00
- .rodata        0x9d06ada4       0x98 build/OLIMEX/production/_ext/1728301206/Setup.o
-                0x9d06ada4                BaudRateList
+ *fill*         0x9d06adb5        0x3 00
+ .rodata        0x9d06adb8       0x98 build/OLIMEX/production/_ext/1728301206/Setup.o
+                0x9d06adb8                BaudRateList
  .rodata.str1.4
-                0x9d06ae3c      0x45e build/OLIMEX/production/_ext/1728301206/Setup.o
+                0x9d06ae50      0x45e build/OLIMEX/production/_ext/1728301206/Setup.o
                                 0x468 (size before relaxing)
- *fill*         0x9d06b29a        0x2 00
- .rodata        0x9d06b29c       0x70 build/OLIMEX/production/_ext/1728301206/Term.o
-                0x9d06b29c                TBaudRateList
+ *fill*         0x9d06b2ae        0x2 00
+ .rodata        0x9d06b2b0       0x70 build/OLIMEX/production/_ext/1728301206/Term.o
+                0x9d06b2b0                TBaudRateList
  .rodata.str1.4
-                0x9d06b30c      0x107 build/OLIMEX/production/_ext/1728301206/Term.o
+                0x9d06b320      0x107 build/OLIMEX/production/_ext/1728301206/Term.o
                                 0x10c (size before relaxing)
- *fill*         0x9d06b413        0x1 00
+ *fill*         0x9d06b427        0x1 00
  .rodata.str1.4
-                0x9d06b414      0x12e build/OLIMEX/production/_ext/1091586137/serial.o
+                0x9d06b428      0x12e build/OLIMEX/production/_ext/1091586137/serial.o
                                 0x134 (size before relaxing)
- *fill*         0x9d06b542        0x2 00
- .rodata        0x9d06b544      0x104 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libc.a(ctype.o)
-                0x9d06b544                _ctype
- .rodata        0x9d06b648      0x1a0 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libc.a(_doprnt.o)
- .rodata.cst8   0x9d06b7e8       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libc.a(_doprnt.o)
+ *fill*         0x9d06b556        0x2 00
+ .rodata        0x9d06b558      0x104 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libc.a(ctype.o)
+                0x9d06b558                _ctype
+ .rodata        0x9d06b65c      0x1a0 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libc.a(_doprnt.o)
+ *fill*         0x9d06b7fc        0x4 00
+ .rodata.cst8   0x9d06b800       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libc.a(_doprnt.o)
                                  0x30 (size before relaxing)
  .rodata.str1.4
-                0x9d06b808       0x1c C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libc.a(_doprnt.o)
- .rodata        0x9d06b824       0x14 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libc.a(_iobstring.o)
-                0x9d06b824                _io_strfuncs
- .rodata.cst8   0x9d06b838        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libm.a(w_pow.o)
- .rodata        0x9d06b840       0x48 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libe.a(_strtod.o)
- .rodata.cst8   0x9d06b888        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libe.a(_strtod.o)
+                0x9d06b820       0x1c C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libc.a(_doprnt.o)
+ .rodata        0x9d06b83c       0x14 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libc.a(_iobstring.o)
+                0x9d06b83c                _io_strfuncs
+ .rodata.cst8   0x9d06b850        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libm.a(w_pow.o)
+ .rodata        0x9d06b858       0x48 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libe.a(_strtod.o)
+ .rodata.cst8   0x9d06b8a0        0x8 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libe.a(_strtod.o)
                                  0x18 (size before relaxing)
- .rodata.cst8   0x9d06b890       0x18 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libe.a(_ldexp.o)
- .rodata        0x9d06b8a8      0x7d4 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libmchp_peripheral_32MX795F512H.a(int_tbl_lib.o)
-                0x9d06b8a8                __IntVectorTbl
-                0x9d06bb60                __IntSrcTbl
- .rodata        0x9d06c07c       0xa0 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libmchp_peripheral_32MX795F512H.a(spi_io_tbl_libp.o)
-                0x9d06c07c                _SpiIoTbl
- .rodata        0x9d06c11c       0x14 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libmchp_peripheral_32MX795F512H.a(spi_map_tbl_libp.o)
-                0x9d06c11c                _SpiMapTbl
- .rodata        0x9d06c130        0x4 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libmchp_peripheral_32MX795F512H.a(dma_reg_map_tbl_lib.o)
-                0x9d06c130                _DmaMapTbl
- .rodata        0x9d06c134       0x54 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libmchp_peripheral_32MX795F512H.a(_ports_tbl_libp.o)
-                0x9d06c134                PortRegTbl
- .rodata        0x9d06c188       0x18 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libmchp_peripheral_32MX795F512H.a(uart_lib.o)
-                0x9d06c188                uartReg
- .rodata        0x9d06c1a0        0xc C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libmchp_peripheral_32MX795F512H.a(I2CPrivate.o)
-                0x9d06c1a0                i2cBase
+ .rodata.cst8   0x9d06b8a8       0x18 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libe.a(_ldexp.o)
+ .rodata        0x9d06b8c0      0x7d4 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libmchp_peripheral_32MX795F512H.a(int_tbl_lib.o)
+                0x9d06b8c0                __IntVectorTbl
+                0x9d06bb78                __IntSrcTbl
+ .rodata        0x9d06c094       0xa0 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libmchp_peripheral_32MX795F512H.a(spi_io_tbl_libp.o)
+                0x9d06c094                _SpiIoTbl
+ .rodata        0x9d06c134       0x14 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libmchp_peripheral_32MX795F512H.a(spi_map_tbl_libp.o)
+                0x9d06c134                _SpiMapTbl
+ .rodata        0x9d06c148        0x4 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libmchp_peripheral_32MX795F512H.a(dma_reg_map_tbl_lib.o)
+                0x9d06c148                _DmaMapTbl
+ .rodata        0x9d06c14c       0x54 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libmchp_peripheral_32MX795F512H.a(_ports_tbl_libp.o)
+                0x9d06c14c                PortRegTbl
+ .rodata        0x9d06c1a0       0x18 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libmchp_peripheral_32MX795F512H.a(uart_lib.o)
+                0x9d06c1a0                uartReg
+ .rodata        0x9d06c1b8        0xc C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../../pic32mx/lib/speed\libmchp_peripheral_32MX795F512H.a(I2CPrivate.o)
+                0x9d06c1b8                i2cBase
  *(.rodata1)
-                0x9d06c1ac                . = ALIGN (0x4)
+                0x9d06c1c4                . = ALIGN (0x4)
 
-.sdata2         0x9d06c1ac        0x0
+.sdata2         0x9d06c1c4        0x0
  *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
-                0x9d06c1ac                . = ALIGN (0x4)
+                0x9d06c1c4                . = ALIGN (0x4)
 
-.sbss2          0x9d06c1ac        0x0
+.sbss2          0x9d06c1c4        0x0
  *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
-                0x9d06c1ac                . = ALIGN (0x4)
+                0x9d06c1c4                . = ALIGN (0x4)
 
 .eh_frame_hdr
  *(.eh_frame_hdr)
 
-.eh_frame       0x9d06c1ac       0x40
+.eh_frame       0x9d06c1c4       0x40
  *(.eh_frame)
- .eh_frame      0x9d06c1ac       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/speed\libgcc.a(_udivdi3.o)
- .eh_frame      0x9d06c1cc       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/speed\libgcc.a(_umoddi3.o)
+ .eh_frame      0x9d06c1c4       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/speed\libgcc.a(_udivdi3.o)
+ .eh_frame      0x9d06c1e4       0x20 C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/speed\libgcc.a(_umoddi3.o)
 
 .dbg_data       0xa0000000        0x0
                 0xa0000000                . = (. + DEFINED (_DEBUGGER)?0x200:0x0)
@@ -3037,7 +3038,7 @@ LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../
  *(.persist .persist.*)
                 0xa0000000                _persist_end = .
 
-.data           0xa0000000     0x12f4 load address 0x9d06c1ec
+.data           0xa0000000     0x12f4 load address 0x9d06c204
                 0xa0000000                _data_begin = .
  *(.data .data.* .gnu.linkonce.d.*)
  .data          0xa0000000       0x44 build/OLIMEX/production/_ext/2012694729/Files.o
@@ -3076,7 +3077,7 @@ LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../
                 0xa00012f0                _RtccWaitClkStepSz
  *(.gnu.linkonce.d.*personality*)
  *(.data1)
-                0x9d06c1ec                _data_image_begin = LOADADDR (.data)
+                0x9d06c204                _data_image_begin = LOADADDR (.data)
 
 .eh_frame
  *(.eh_frame)
@@ -3087,7 +3088,7 @@ LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../
  *(.got.plt)
  *(.got)
 
-.sdata          0xa00012f4       0x54 load address 0x9d06d4e0
+.sdata          0xa00012f4       0x54 load address 0x9d06d4f8
                 0xa00012f4                _sdata_begin = .
  *(.sdata .sdata.* .gnu.linkonce.s.*)
  .sdata         0xa00012f4        0x8 build/OLIMEX/production/_ext/2012694729/Files.o
@@ -3128,7 +3129,7 @@ LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../
                 0xa0001348                _data_end = .
                 0xa0001348                _bss_begin = .
 
-.sbss           0xa0001348      0x4f0 load address 0x9d06d534
+.sbss           0xa0001348      0x4f0 load address 0x9d06d54c
                 0xa0001348                _sbss_begin = .
  *(.dynsbss)
  *(.sbss .sbss.* .gnu.linkonce.sb.*)
@@ -3476,7 +3477,7 @@ LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../
                 0xa0001834                _nofpu
                 0xa0001838                _sbss_end = .
 
-.bss            0xa0001838    0x137a8 load address 0x9d06d534
+.bss            0xa0001838    0x137a8 load address 0x9d06d54c
  *(.dynbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
  .bss           0xa0001838      0x200 build/OLIMEX/production/_ext/2012694729/I2C.o
@@ -3588,12 +3589,12 @@ LOAD C:/Program Files/Microchip/MPLAB C32/bin/../lib/gcc/pic32mx/3.4.4/../../../
  *fill*         0xa0014ff0      0x400 00
                 0xa00153f0                . = ALIGN (0x8)
 
-.ramfunc        0xa0015800        0x0 load address 0x9d06d534
+.ramfunc        0xa0015800        0x0 load address 0x9d06d54c
                 0xa0015800                _ramfunc_begin = .
  *(.ramfunc .ramfunc.*)
                 0xa0015800                . = ALIGN (0x4)
                 0xa0015800                _ramfunc_end = .
-                0x9d06d534                _ramfunc_image_begin = LOADADDR (.ramfunc)
+                0x9d06d54c                _ramfunc_image_begin = LOADADDR (.ramfunc)
                 0x00000000                _ramfunc_length = SIZEOF (.ramfunc)
                 0x00015800                _bmxdkpba_address = (_ramfunc_begin - 0xa0000000)
                 0x00020000                _bmxdudba_address = 0x20000
