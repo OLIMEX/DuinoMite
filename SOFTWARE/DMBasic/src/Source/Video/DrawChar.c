@@ -420,7 +420,8 @@ void VideoPutc(char c) {
 		}
 	}
 
-	if(MMPosY + (fontHeight * fontScale) > VRes + 1) {			// if we are beyond the bottom of the screen scroll up the previous lines
+//  if(MMPosY + (fontHeight * fontScale) > VRes + 1) {			// if we are beyond the bottom of the screen scroll up the previous lines
+        if(MMPosY >= VRes) {			// if we are beyond the bottom of the screen scroll up the previous lines
 	int *pd = VA;
        	int *ps = pd + (HBUFSIZE/32) * (fontHeight * fontScale);
        	int i;
