@@ -206,7 +206,11 @@ void ClearExternalIO(void) {
 	for (i = 1; i < NBRPINS + 1; i++) {
 		inttbl[i].intp = NULL;						// disable all interrupts
 #ifdef OLIMEX
+    #ifdef  OLIMEX_DUINOMITE_EMEGA
+		if (ExtCurrentConfig[i] != EXT_CONSOLE_RESERVED && i != 35 ) {	// don't reset the serial console
+    #else
 		if (ExtCurrentConfig[i] != EXT_CONSOLE_RESERVED && i != 21 ) {	// don't reset the serial console
+    #endif
 #else
 		if (ExtCurrentConfig[i] != EXT_CONSOLE_RESERVED) {              // don't reset the serial console
 #endif
@@ -236,7 +240,11 @@ void initExtIO(void) {
 	P_LED_TRIS = P_OUTPUT; 							// make the LED pin an output
 	ExtSet(0, 0);								// and turn it off
 #ifdef OLIMEX
+    #ifdef OLIMEX_DUINOMITE_EMEGA
+	ExtCurrentConfig[35] = EXT_ANA_IN;
+    #else
 	ExtCurrentConfig[21] = EXT_ANA_IN;
+    #endif
 #endif
 
 	// setup the analog (ADC) function
@@ -262,7 +270,10 @@ int ExtCfg(int pin, int cfg) {
 #ifdef OLIMEX
 //	if (pin == 5) ConfigINT2(EXT_INT_PRI_2 | RISING_EDGE_INT | EXT_INT_DISABLE);
 //	if (pin == 6) ConfigINT3(EXT_INT_PRI_2 | RISING_EDGE_INT | EXT_INT_DISABLE);
-	if (pin == 7) ConfigINT4(EXT_INT_PRI_2 | RISING_EDGE_INT | EXT_INT_DISABLE);
+        #ifdef  OLIMEX_DUINOMITE_EMEGA
+        #else
+                if (pin == 7) ConfigINT4(EXT_INT_PRI_2 | RISING_EDGE_INT | EXT_INT_DISABLE);
+        #endif
 #else
 	if (pin == 11) ConfigINT1(EXT_INT_PRI_2 | RISING_EDGE_INT | EXT_INT_DISABLE);
 	if (pin == 12) ConfigINT2(EXT_INT_PRI_2 | RISING_EDGE_INT | EXT_INT_DISABLE);
@@ -330,6 +341,9 @@ int ExtCfg(int pin, int cfg) {
 //				tris = 1; ana = 1; oc = 1;
 //				break;
 //			}
+#ifdef  OLIMEX_DUINOMITE_EMEGA
+                    break;
+#else
 	#ifdef OLIMEX
 			if (pin == 7) {
 	#else
@@ -341,6 +355,7 @@ int ExtCfg(int pin, int cfg) {
 				break;
 			}
 			return false;							// not an interrupt enabled pin
+#endif
 
 		case EXT_INT_LO:											// same as digital input, so fall through
 		case EXT_INT_HI:											// same as digital input, so fall through
@@ -402,10 +417,17 @@ int ExtCfg(int pin, int cfg) {
 		case 5:  P_E5_TRIS = tris;   P_E5_OC = oc;   P_E5_ANALOG = ana;		break;
 		case 6:  P_E6_TRIS = tris;   P_E6_OC = oc;   P_E6_ANALOG = ana;		break;
 	#ifdef OLIMEX
+            #ifdef  OLIMEX_DUINOMITE_EMEGA
+		case 7:  P_E7_TRIS = tris;   P_E7_OC = oc;   P_E7_ANALOG = ana;		break;
+		case 8:  P_E8_TRIS = tris;   P_E8_OC = oc;   break;
+		case 9:  P_E9_TRIS = tris;   P_E9_OC = oc;   break;
+		case 10: P_E10_TRIS = tris;  P_E10_OC = oc;  break;
+            #else
 		case 7:  P_E7_TRIS = tris;   P_E7_OC = oc;	              break;
  		case 8:  if (!S.SDEnable) { P_E8_TRIS = tris; P_E8_OC = oc;}  break;
 		case 9:  if (!S.SDEnable) { P_E9_TRIS = tris; P_E9_OC = oc;}  break;
 		case 10: if (!S.SDEnable) { P_E10_TRIS = tris; P_E10_OC = oc;} break;
+            #endif
 	#else
 		case 7:  P_E7_TRIS = tris;   P_E7_OC = oc;   P_E7_ANALOG = ana;		break;
 		case 8:  P_E8_TRIS = tris;   P_E8_OC = oc;   P_E8_ANALOG = ana;		break;
@@ -421,6 +443,30 @@ int ExtCfg(int pin, int cfg) {
 		case 17: P_E17_TRIS = tris;  P_E17_OC = oc;			break;
 		case 18: P_E18_TRIS = tris;  P_E18_OC = oc;			break;
 	#ifdef OLIMEX
+            // SPP +
+            #ifdef	OLIMEX_DUINOMITE_EMEGA		// edit for DuinoMite eMega
+		case 19: P_E19_TRIS = tris;  P_E19_OC = oc;			break;
+		case 20: P_E20_TRIS = tris;  P_E20_OC = oc;                     break;
+                case 21: P_E21_TRIS = tris;  P_E21_OC = oc;			break;
+		case 22: P_E22_TRIS = tris;  P_E22_OC = oc;			break;
+		case 23: P_E23_TRIS = tris;  P_E23_OC = oc;			break;
+		case 24: P_E24_TRIS = tris;  P_E24_OC = oc;			break;
+		case 25: P_E25_TRIS = tris;  P_E25_OC = oc;			break;
+		case 26: P_E26_TRIS = tris;  P_E26_OC = oc;			break;
+		case 27: P_E27_TRIS = tris;  P_E27_OC = oc;			break;
+		case 28: P_E28_TRIS = tris;  P_E28_OC = oc;			break;
+		case 29: P_E29_TRIS = tris;  P_E29_OC = oc;			break;
+		case 30: P_E30_TRIS = tris;  P_E30_OC = oc;			break;
+		case 31: P_E31_TRIS = tris;  P_E31_OC = oc; P_E31_ANALOG = ana;	break;
+		case 32: P_E32_TRIS = tris;  P_E32_OC = oc; P_E31_ANALOG = ana;	break;
+		case 33: P_E33_TRIS = tris;  P_E33_OC = oc;			break;
+		case 34: P_E34_TRIS = tris;  P_E34_OC = oc;			break;
+		case 35: P_E35_TRIS = tris;  P_E35_OC = oc; P_E31_ANALOG = ana; break;
+		case 36: P_E36_TRIS = tris;  P_E36_OC = oc;			break;
+		case 37: P_E37_TRIS = tris;  P_E37_OC = oc;			break;
+		case 38: P_E38_TRIS = tris;  P_E38_OC = oc;			break;
+		case 39: P_E39_TRIS = tris;  P_E39_OC = oc;			break;
+            #else	// original by Geoff Graham for DuinoMite Mega
 		case 19: //if (!S.VideoMode) {
                     P_E19_TRIS = tris; P_E19_OC = oc; P_E19_ANALOG = ana;//}
                 break;
@@ -428,12 +474,14 @@ int ExtCfg(int pin, int cfg) {
 		case 21: P_E21_TRIS = tris;  P_E21_OC = oc;  P_E21_ANALOG = ana;		break;
                 case 22: P_E22_TRIS = tris;  P_E22_OC = oc; break;
                 case 23: P_E23_TRIS = tris;  P_E23_OC = oc; break;
+            #endif
+            // SPP -
 	#else
 		case 19: P_E19_TRIS = tris;  P_E19_OC = oc;			break;
 		case 20: P_E20_TRIS = tris;  P_E20_OC = oc;			break;
 	#endif
 	#ifdef UBW32
-		case 21: P_E21_TRIS = tris;  P_E21_OC = oc;			break;
+                case 21: P_E21_TRIS = tris;  P_E21_OC = oc;			break;
 		case 22: P_E22_TRIS = tris;  P_E22_OC = oc;			break;
 		case 23: P_E23_TRIS = tris;  P_E23_OC = oc;			break;
 		case 24: P_E24_TRIS = tris;  P_E24_OC = oc;			break;
@@ -493,9 +541,15 @@ int ExtSet(int pin, int val){
 		case 6:	 P_E6_OUT = val;   break;
 		case 7:	 P_E7_OUT = val;   break;
 	#ifdef OLIMEX
+            #ifdef  OLIMEX_DUINOMITE_EMEGA
+		case 8:	 P_E8_OUT = val;   break;
+		case 9:	 P_E9_OUT = val;   break;
+		case 10: P_E10_OUT = val;  break;
+            #else
 		case 8:	 if (!S.SDEnable) P_E8_OUT = val;   break;
 		case 9:	 if (!S.SDEnable) P_E9_OUT = val;   break;
 		case 10: if (!S.SDEnable) P_E10_OUT = val;  break;
+            #endif
 	#else
 		case 8:	 P_E8_OUT = val;   break;
 		case 9:	 P_E9_OUT = val;   break;
@@ -510,15 +564,20 @@ int ExtSet(int pin, int val){
 		case 17: P_E17_OUT = val;  break;
 		case 18: P_E18_OUT = val;  break;
 	#ifdef OLIMEX
+            #ifdef  OLIMEX_DUINOMITE_EMEGA
+                case 19: P_E19_OUT = val; break;
+                case 20: P_E20_OUT = val; break;
+            #else
 		case 19: P_E19_OUT = val;  break;
 		case 20: if (!S.VideoMode || P_VGA_COMP) P_E20_OUT = val;  break;
                 case 22: P_E22_OUT = val ; break;
                 case 23: P_E23_OUT = val ; break;
+            #endif
         #else
 		case 19: P_E19_OUT = val;  break;
 		case 20: P_E20_OUT = val;  break;
 	#endif
-	#ifdef UBW32
+        #if defined UBW32 || defined OLIMEX_DUINOMITE_EMEGA
 		case 21: P_E21_OUT = val;	break;
 		case 22: P_E22_OUT = val;	break;
 		case 23: P_E23_OUT = val;	break;
@@ -538,6 +597,8 @@ int ExtSet(int pin, int val){
 		case 37: P_E37_OUT = val;	break;
 		case 38: P_E38_OUT = val;	break;
 		case 39: P_E39_OUT = val;	break;
+        #endif
+        #ifdef UBW32
 		case 40: P_E40_OUT = val;	break;
 		case 41: P_E41_OUT = val;	break;
 		case 42: P_E42_OUT = val;	break;
@@ -582,9 +643,15 @@ int ExtInp(int pin, int *val){
 			case 6:	 r = P_E6_IN;  break;
 			case 7:	 r = P_E7_IN;  break;
 		#ifdef OLIMEX
+                    #ifdef  OLIMEX_DUINOMITE_EMEGA
+			case 8:	 r = P_E8_IN;  break;
+			case 9:	 r = P_E9_IN;  break;
+			case 10: r = P_E10_IN; break;
+                    #else
 			case 8:	 if (!S.SDEnable) r = P_E8_IN;  break;
 			case 9:	 if (!S.SDEnable) r = P_E9_IN;  break;
 			case 10: if (!S.SDEnable) r = P_E10_IN; break;
+                    #endif
 		#else
 			case 8:	 r = P_E8_IN;  break;
 			case 9:	 r = P_E9_IN;  break;
@@ -599,15 +666,20 @@ int ExtInp(int pin, int *val){
 			case 17: r = P_E17_IN; break;
 			case 18: r = P_E18_IN; break;
 		#ifdef OLIMEX
+                    #ifdef  OLIMEX_DUINOMITE_EMEGA
+			case 19: r = P_E19_IN; break;
+			case 20: r = P_E20_IN; break;
+                    #else
 			case 19: r = P_E19_IN; break;
 			case 20: if (!S.VideoMode || P_VGA_COMP) r = P_E20_IN; break;
                         case 22: r = P_E22_IN; break;
                         case 23: r = P_E23_IN; break;
+                    #endif
                 #else
 			case 19: r = P_E19_IN; break;
 			case 20: r = P_E20_IN; break;
 		#endif
-		#ifdef UBW32
+                #if defined UBW32 || defined OLIMEX_DUINOMITE_EMEGA
 			case 21: r = P_E21_IN;	break;
 			case 22: r = P_E22_IN;	break;
 			case 23: r = P_E23_IN;	break;
@@ -627,6 +699,8 @@ int ExtInp(int pin, int *val){
 			case 37: r = P_E37_IN;	break;
 			case 38: r = P_E38_IN;	break;
 			case 39: r = P_E39_IN;	break;
+                #endif
+		#ifdef UBW32
 			case 40: r = P_E40_IN;	break;
 			case 41: r = P_E41_IN;	break;
 			case 42: r = P_E42_IN;	break;
@@ -653,10 +727,16 @@ int ExtInp(int pin, int *val){
 			case 4:  AD1CHSbits.CH0SA = P_E4_ACHAN;  break;
 			case 5:  AD1CHSbits.CH0SA = P_E5_ACHAN;  break;
 			case 6:  AD1CHSbits.CH0SA = P_E6_ACHAN;  break;
-#ifdef OLIMEX
+#ifdef  OLIMEX
+		// SPP +
+		#ifdef	OLIMEX_DUINOMITE_EMEGA	// edit for DuinoMite eMega
+                        case 35: AD1CHSbits.CH0SA = P_E35_ACHAN; break;
+		#else		// original by Geoff Graham for DuinoMite Mega
 			case 19: if (!S.VideoMode) AD1CHSbits.CH0SA = P_E19_ACHAN;  break;
 			case 20: if (!S.VideoMode) AD1CHSbits.CH0SA = P_E20_ACHAN;  break;
 			case 21: AD1CHSbits.CH0SA = P_E21_ACHAN;  break;
+		#endif
+		// SPP -
 #else
 			case 7:  AD1CHSbits.CH0SA = P_E7_ACHAN;  break;
 			case 8:  AD1CHSbits.CH0SA = P_E8_ACHAN;  break;
@@ -665,16 +745,23 @@ int ExtInp(int pin, int *val){
 #endif
 		}
 #ifdef OLIMEX
+    #ifdef  OLIMEX_DUINOMITE_EMEGA
+    #else
 		if ((pin == 19 || pin == 20) && S.VideoMode) {
 			*val = 0;
 			return true;
 		}
+    #endif
 #endif
 		AD1CON1bits.SAMP = 1;       						// start sampling
 		while (!AD1CON1bits.DONE && !MMAbort);  // wait conversion complete
 		*val = ADC1BUF0;												// and get the result
 #ifdef OLIMEX
+    #ifdef  OLIMEX_DUINOMITE_EMEGA
+		if (pin == 35) *val *= 3.13;
+    #else
 		if (pin == 21) *val *= 3.13;
+    #endif
 #endif
 		return true;
 	}

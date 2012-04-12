@@ -60,7 +60,11 @@
 
 #include "Compiler.h"
 #include "GenericTypeDefs.h"
-#include "./IOPorts - Olimex.h"
+#ifdef OLIMEX_DUINOMITE_EMEGA
+    #include "./IOPorts - Olimex DuinoMite eMega.h"
+#else
+    #include "./IOPorts - Olimex.h"
+#endif
 #include "MDD File System/FSIO.h"
 #include "MDD File System/FSDefs.h"
 #include "MDD File System/SD-SPI.h"

@@ -872,18 +872,33 @@ void clearprog(void) {
 // search through program memory looking for a line number. Stops when it has a matching or larger number
 // returns a pointer to the T_LINENBR token or a pointer to the two zero characters representing the end of the program
 
-char *findline(int nbr, int mustfind) {
-    char *p;
+char *findline(int nbr, int mustfind)
+{
+// SPP +
+    #ifdef  OLIMEX_DUINOMITE_EMEGA
+    unsigned char *p;   // edit by SPP
+    #else
+    char *p;         // original
+    #endif
+// SPP -
     int i;
 
     p = pmemory;
     while (1) {
-        if (p[0] == 0 && p[1] == 0) {
+        if (p[0] == 0 && p[1] == 0)
+        {
             i = MAXLINENBR;
             // p++;
             break;
         }
-        if (p[0] == T_LINENBR) {
+    // SPP +
+    #ifdef  OLIMEX_DUINOMITE_EMEGA
+        if (p[0] >= T_LINENBR)    // edin by SPP
+    #else
+        if (p[0] == T_LINENBR)    // original
+    #endif
+    // SPP -
+        {
             i = (p[1] << 8) | p[2];
             if (i >= nbr) break;
             p += 2;

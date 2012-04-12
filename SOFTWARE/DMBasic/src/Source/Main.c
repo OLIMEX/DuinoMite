@@ -147,9 +147,8 @@ Other defines
 						"Copyright " YEAR " Geoff Graham\r\n" 
 #endif
 #ifdef OLIMEX
-#define MES_SIGNON  "\rDMBasic for DuinoMite www.olimex.com\r\n"\
-                    "Build: " __DATE__ " " __TIME__ "\r\n"\
-		    "Based On MMBasic By Geoff Graham\r\n"
+#define MES_SIGNON  "\rDMBasic Build Date: " __DATE__ " Time:" __TIME__ "\r\n"\
+		    "www.olimex.com, Based On MMBasic By Geoff Graham\r\n"
 #endif
 #define MES_EXCEPTION   "\rException code %d at 0x%X\r\n"\
 			"An internal error was trapped (sorry).\r\n"\
@@ -233,8 +232,22 @@ const ROM InquiryResponse inq_resp = {
 /****************************************************************************************************************************
 Main program
  *****************************************************************************************************************************/
-int main(void) {
 
+/*
+int main ()
+{
+    P_E1_ANALOG = 1;
+    P_E1_TRIS = P_OUTPUT;
+    while (1)
+    {
+        P_E1_OUT = P_ON;
+        P_E1_OUT = P_OFF;
+    }
+}
+ */
+
+int main(void) {
+    int i;
     // initial setup of the I/O ports
     AD1PCFG = 0xFFFF; // Default all pins to digital
     mJTAGPortEnable(0); // turn off jtag
@@ -259,10 +272,20 @@ int main(void) {
 #endif
     INTEnableSystemMultiVectoredInt(); // allow vectored interrupts
 #ifdef OLIMEX
-    TRISBbits.TRISB13 = 0;
-    ODCBbits.ODCB13 = 1;
-    PORTBbits.RB13 = 0;
-    TRISBbits.TRISB11 = 1; //make sure vga/composite select is input
+	// SPP +
+	#ifdef	OLIMEX_DUINOMITE_EMEGA       // patch for eMega
+            TRISGbits.TRISG13 = 0;
+            ODCGbits.ODCG13 = 1;
+            LATGbits.LATG13 = 0;
+            TRISDbits.TRISD1 = 1;
+	#else           // original by Geoff Graham for DuinoMite-Mega
+	    TRISBbits.TRISB13 = 0;
+	    ODCBbits.ODCB13 = 1;
+	    PORTBbits.RB13=0;
+            TRISBbits.TRISB11 = 1; //make sure vga/composite select is input
+	#endif
+        for (i=100000; i; i--);	// some delay
+	// SPP -
 #endif
 
     LoadSetup(); //load setup from flash
@@ -442,8 +465,7 @@ void __ISR(_TIMER_1_VECTOR, ipl4) T1Interrupt(void) {
                 if (USB_RxBuf[i] == 3 && !FileXfr) // check for CTRL-C
                     MMAbort = true; // and if so tell BASIC to stop running
                 if (PrintSignonToUSB) {
-//                  strncpy(USB_TxBuf[USB_Current_TxBuf], MES_SIGNON, USB_TX_BUFFER_SIZE); // if first time send signon msg
-                    strncpy(USB_TxBuf[USB_Current_TxBuf], "DM-BASIC USB CONSOLE\r\n", USB_TX_BUFFER_SIZE); // if first time send signon msg
+                    strncpy(USB_TxBuf[USB_Current_TxBuf], MES_SIGNON, USB_TX_BUFFER_SIZE); // if first time send signon msg
                     USB_NbrCharsInTxBuf = strlen(USB_TxBuf[USB_Current_TxBuf]);
                     PrintSignonToUSB = false;
                 }
@@ -1132,7 +1154,8 @@ int MMInkey(void) {
 int MMgetchar(void) {
     int c;
 
-    do {
+    do
+    {
         ShowCursor(true);
         c = MMInkey();
         if (c == '\r') c = '\n';
@@ -1253,7 +1276,7 @@ void _general_exception_handler(void) {
     _excep_code = (_excep_code & 0x0000007C) >> 2;
 
     debughalt(); // Break here when compiling under a Debug build configuration
-    SoftReset(); // this will restart the processor ? only works when not in debug
+    SoftReset(); // this will restart the processor – only works when not in debug
 }
 
 
@@ -1346,4 +1369,3 @@ void StopProfiling(void) {
 }
 
 #endif
-

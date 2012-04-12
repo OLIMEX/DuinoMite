@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>Maximite-Olimex</name>
+            <name>Maximite-Olimex for the GIT</name>
             <creation-uuid>898b318a-80e5-432b-acbe-66b62a59b198</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
