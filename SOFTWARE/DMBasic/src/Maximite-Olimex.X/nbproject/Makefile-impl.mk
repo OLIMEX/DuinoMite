@@ -43,20 +43,6 @@ ALLCONFS=OLIMEX MAXIMITE
 .clean-impl: .clean-pre
 	${MAKE} -f nbproject/Makefile-${CONF}.mk SUBPROJECTS=${SUBPROJECTS} .clean-conf
 
-# clobber
-.clobber-impl: .clobber-pre .depcheck-impl
-	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=OLIMEX clean
-	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=MAXIMITE clean
-
-
-
-# all
-.all-impl: .all-pre .depcheck-impl
-	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=OLIMEX build
-	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=MAXIMITE build
-
-
-
 # dependency checking support
 .depcheck-impl:
 #	@echo "# This code depends on make tool being used" >.dep.inc

@@ -107,6 +107,7 @@ TIMER NBR    DESCRIPTION                 INTERRUPT
 //#include "DuinoMite/Power.h"
 #include "DuinoMite/RTC.h"
 #include "DuinoMite/GameDuino.h"
+#include "DuinoMite/CAN.h"
 #endif
 
 
@@ -287,7 +288,9 @@ int main(void) {
         for (i=100000; i; i--);	// some delay
 	// SPP -
 #endif
-
+#ifdef OLIMEX
+    CanInit(); // initialize the CAN driver
+#endif
     LoadSetup(); //load setup from flash
                  // init global variables
     USB_NbrCharsInTxBuf = 0;

@@ -6,7 +6,7 @@ build/OLIMEX/production/_ext/1728301206/Main.o: ../Source/Main.c \
   ../Source/Video/Video.h ../Source/Keyboard/Keyboard.h \
   ../Source/Timers/Timers.h ../Source/Serial/serial.h ../Source/Setup.h \
   ../Source/DuinoMite/RTC.h ../Source/DuinoMite/GameDuino.h \
-  ../Source/./USB/Microchip/Include/USB/usb.h \
+  ../Source/DuinoMite/CAN.h ../Source/./USB/Microchip/Include/USB/usb.h \
   ../Source/SDCard/Microchip/Include/Compiler.h \
   ../Source/USB/./../USB/usb_config.h \
   ../Source/USB/Microchip/Include/USB/usb_common.h \

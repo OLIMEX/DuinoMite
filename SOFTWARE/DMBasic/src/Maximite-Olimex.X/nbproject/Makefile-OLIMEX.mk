@@ -9,12 +9,11 @@
 
 # Include project Makefile
 include Makefile
-# Include makefile containing local settings
-ifeq "$(wildcard nbproject/Makefile-local-OLIMEX.mk)" "nbproject/Makefile-local-OLIMEX.mk"
-include nbproject/Makefile-local-OLIMEX.mk
-endif
 
 # Environment
+SHELL=cmd.exe
+# Adding MPLAB X bin directory to path
+PATH:=C:/Program Files (x86)/Microchip/MPLABX/mplab_ide/mplab_ide/modules/../../bin/:$(PATH)
 MKDIR=gnumkdir -p
 RM=rm -f 
 MV=mv 
@@ -41,25 +40,40 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/2012694729/Commands.o ${OBJECTDIR}/_ext/2012694729/Custom.o ${OBJECTDIR}/_ext/2012694729/External.o ${OBJECTDIR}/_ext/2012694729/Files.o ${OBJECTDIR}/_ext/2012694729/Functions.o ${OBJECTDIR}/_ext/2012694729/Graphics.o ${OBJECTDIR}/_ext/2012694729/Help.o ${OBJECTDIR}/_ext/2012694729/I2C.o ${OBJECTDIR}/_ext/2012694729/MMBasic.o ${OBJECTDIR}/_ext/2012694729/Misc.o ${OBJECTDIR}/_ext/2012694729/Operators.o ${OBJECTDIR}/_ext/2012694729/XModem.o ${OBJECTDIR}/_ext/2012694729/Editor.o ${OBJECTDIR}/_ext/779736424/FSIO.o ${OBJECTDIR}/_ext/779736424/SD-SPI.o ${OBJECTDIR}/_ext/940238529/usb_descriptors.o ${OBJECTDIR}/_ext/678306549/usb_device.o ${OBJECTDIR}/_ext/488640762/usb_function_cdc.o ${OBJECTDIR}/_ext/718657706/usb_function_msd.o ${OBJECTDIR}/_ext/1624479370/DrawChar.o ${OBJECTDIR}/_ext/1624479370/VT100.o ${OBJECTDIR}/_ext/1624479370/Video.o ${OBJECTDIR}/_ext/2129892895/GameDuino.o ${OBJECTDIR}/_ext/179026188/Keyboard.o ${OBJECTDIR}/_ext/1728301206/Main.o ${OBJECTDIR}/_ext/2129892895/RTC.o ${OBJECTDIR}/_ext/1728301206/Setup.o ${OBJECTDIR}/_ext/1728301206/Term.o ${OBJECTDIR}/_ext/1123757107/Timers.o ${OBJECTDIR}/_ext/1091586137/serial.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/2012694729/Commands.o.d ${OBJECTDIR}/_ext/2012694729/Custom.o.d ${OBJECTDIR}/_ext/2012694729/External.o.d ${OBJECTDIR}/_ext/2012694729/Files.o.d ${OBJECTDIR}/_ext/2012694729/Functions.o.d ${OBJECTDIR}/_ext/2012694729/Graphics.o.d ${OBJECTDIR}/_ext/2012694729/Help.o.d ${OBJECTDIR}/_ext/2012694729/I2C.o.d ${OBJECTDIR}/_ext/2012694729/MMBasic.o.d ${OBJECTDIR}/_ext/2012694729/Misc.o.d ${OBJECTDIR}/_ext/2012694729/Operators.o.d ${OBJECTDIR}/_ext/2012694729/XModem.o.d ${OBJECTDIR}/_ext/2012694729/Editor.o.d ${OBJECTDIR}/_ext/779736424/FSIO.o.d ${OBJECTDIR}/_ext/779736424/SD-SPI.o.d ${OBJECTDIR}/_ext/940238529/usb_descriptors.o.d ${OBJECTDIR}/_ext/678306549/usb_device.o.d ${OBJECTDIR}/_ext/488640762/usb_function_cdc.o.d ${OBJECTDIR}/_ext/718657706/usb_function_msd.o.d ${OBJECTDIR}/_ext/1624479370/DrawChar.o.d ${OBJECTDIR}/_ext/1624479370/VT100.o.d ${OBJECTDIR}/_ext/1624479370/Video.o.d ${OBJECTDIR}/_ext/2129892895/GameDuino.o.d ${OBJECTDIR}/_ext/179026188/Keyboard.o.d ${OBJECTDIR}/_ext/1728301206/Main.o.d ${OBJECTDIR}/_ext/2129892895/RTC.o.d ${OBJECTDIR}/_ext/1728301206/Setup.o.d ${OBJECTDIR}/_ext/1728301206/Term.o.d ${OBJECTDIR}/_ext/1123757107/Timers.o.d ${OBJECTDIR}/_ext/1091586137/serial.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/2012694729/Commands.o ${OBJECTDIR}/_ext/2012694729/Custom.o ${OBJECTDIR}/_ext/2012694729/External.o ${OBJECTDIR}/_ext/2012694729/Files.o ${OBJECTDIR}/_ext/2012694729/Functions.o ${OBJECTDIR}/_ext/2012694729/Graphics.o ${OBJECTDIR}/_ext/2012694729/Help.o ${OBJECTDIR}/_ext/2012694729/I2C.o ${OBJECTDIR}/_ext/2012694729/MMBasic.o ${OBJECTDIR}/_ext/2012694729/Misc.o ${OBJECTDIR}/_ext/2012694729/Operators.o ${OBJECTDIR}/_ext/2012694729/XModem.o ${OBJECTDIR}/_ext/2012694729/Editor.o ${OBJECTDIR}/_ext/779736424/FSIO.o ${OBJECTDIR}/_ext/779736424/SD-SPI.o ${OBJECTDIR}/_ext/940238529/usb_descriptors.o ${OBJECTDIR}/_ext/678306549/usb_device.o ${OBJECTDIR}/_ext/488640762/usb_function_cdc.o ${OBJECTDIR}/_ext/718657706/usb_function_msd.o ${OBJECTDIR}/_ext/1624479370/DrawChar.o ${OBJECTDIR}/_ext/1624479370/VT100.o ${OBJECTDIR}/_ext/1624479370/Video.o ${OBJECTDIR}/_ext/2129892895/GameDuino.o ${OBJECTDIR}/_ext/179026188/Keyboard.o ${OBJECTDIR}/_ext/1728301206/Main.o ${OBJECTDIR}/_ext/2129892895/RTC.o ${OBJECTDIR}/_ext/1728301206/Setup.o ${OBJECTDIR}/_ext/1728301206/Term.o ${OBJECTDIR}/_ext/1123757107/Timers.o ${OBJECTDIR}/_ext/1091586137/serial.o ${OBJECTDIR}/_ext/2129892895/CAN.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/2012694729/Commands.o.d ${OBJECTDIR}/_ext/2012694729/Custom.o.d ${OBJECTDIR}/_ext/2012694729/External.o.d ${OBJECTDIR}/_ext/2012694729/Files.o.d ${OBJECTDIR}/_ext/2012694729/Functions.o.d ${OBJECTDIR}/_ext/2012694729/Graphics.o.d ${OBJECTDIR}/_ext/2012694729/Help.o.d ${OBJECTDIR}/_ext/2012694729/I2C.o.d ${OBJECTDIR}/_ext/2012694729/MMBasic.o.d ${OBJECTDIR}/_ext/2012694729/Misc.o.d ${OBJECTDIR}/_ext/2012694729/Operators.o.d ${OBJECTDIR}/_ext/2012694729/XModem.o.d ${OBJECTDIR}/_ext/2012694729/Editor.o.d ${OBJECTDIR}/_ext/779736424/FSIO.o.d ${OBJECTDIR}/_ext/779736424/SD-SPI.o.d ${OBJECTDIR}/_ext/940238529/usb_descriptors.o.d ${OBJECTDIR}/_ext/678306549/usb_device.o.d ${OBJECTDIR}/_ext/488640762/usb_function_cdc.o.d ${OBJECTDIR}/_ext/718657706/usb_function_msd.o.d ${OBJECTDIR}/_ext/1624479370/DrawChar.o.d ${OBJECTDIR}/_ext/1624479370/VT100.o.d ${OBJECTDIR}/_ext/1624479370/Video.o.d ${OBJECTDIR}/_ext/2129892895/GameDuino.o.d ${OBJECTDIR}/_ext/179026188/Keyboard.o.d ${OBJECTDIR}/_ext/1728301206/Main.o.d ${OBJECTDIR}/_ext/2129892895/RTC.o.d ${OBJECTDIR}/_ext/1728301206/Setup.o.d ${OBJECTDIR}/_ext/1728301206/Term.o.d ${OBJECTDIR}/_ext/1123757107/Timers.o.d ${OBJECTDIR}/_ext/1091586137/serial.o.d ${OBJECTDIR}/_ext/2129892895/CAN.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/2012694729/Commands.o ${OBJECTDIR}/_ext/2012694729/Custom.o ${OBJECTDIR}/_ext/2012694729/External.o ${OBJECTDIR}/_ext/2012694729/Files.o ${OBJECTDIR}/_ext/2012694729/Functions.o ${OBJECTDIR}/_ext/2012694729/Graphics.o ${OBJECTDIR}/_ext/2012694729/Help.o ${OBJECTDIR}/_ext/2012694729/I2C.o ${OBJECTDIR}/_ext/2012694729/MMBasic.o ${OBJECTDIR}/_ext/2012694729/Misc.o ${OBJECTDIR}/_ext/2012694729/Operators.o ${OBJECTDIR}/_ext/2012694729/XModem.o ${OBJECTDIR}/_ext/2012694729/Editor.o ${OBJECTDIR}/_ext/779736424/FSIO.o ${OBJECTDIR}/_ext/779736424/SD-SPI.o ${OBJECTDIR}/_ext/940238529/usb_descriptors.o ${OBJECTDIR}/_ext/678306549/usb_device.o ${OBJECTDIR}/_ext/488640762/usb_function_cdc.o ${OBJECTDIR}/_ext/718657706/usb_function_msd.o ${OBJECTDIR}/_ext/1624479370/DrawChar.o ${OBJECTDIR}/_ext/1624479370/VT100.o ${OBJECTDIR}/_ext/1624479370/Video.o ${OBJECTDIR}/_ext/2129892895/GameDuino.o ${OBJECTDIR}/_ext/179026188/Keyboard.o ${OBJECTDIR}/_ext/1728301206/Main.o ${OBJECTDIR}/_ext/2129892895/RTC.o ${OBJECTDIR}/_ext/1728301206/Setup.o ${OBJECTDIR}/_ext/1728301206/Term.o ${OBJECTDIR}/_ext/1123757107/Timers.o ${OBJECTDIR}/_ext/1091586137/serial.o
+OBJECTFILES=${OBJECTDIR}/_ext/2012694729/Commands.o ${OBJECTDIR}/_ext/2012694729/Custom.o ${OBJECTDIR}/_ext/2012694729/External.o ${OBJECTDIR}/_ext/2012694729/Files.o ${OBJECTDIR}/_ext/2012694729/Functions.o ${OBJECTDIR}/_ext/2012694729/Graphics.o ${OBJECTDIR}/_ext/2012694729/Help.o ${OBJECTDIR}/_ext/2012694729/I2C.o ${OBJECTDIR}/_ext/2012694729/MMBasic.o ${OBJECTDIR}/_ext/2012694729/Misc.o ${OBJECTDIR}/_ext/2012694729/Operators.o ${OBJECTDIR}/_ext/2012694729/XModem.o ${OBJECTDIR}/_ext/2012694729/Editor.o ${OBJECTDIR}/_ext/779736424/FSIO.o ${OBJECTDIR}/_ext/779736424/SD-SPI.o ${OBJECTDIR}/_ext/940238529/usb_descriptors.o ${OBJECTDIR}/_ext/678306549/usb_device.o ${OBJECTDIR}/_ext/488640762/usb_function_cdc.o ${OBJECTDIR}/_ext/718657706/usb_function_msd.o ${OBJECTDIR}/_ext/1624479370/DrawChar.o ${OBJECTDIR}/_ext/1624479370/VT100.o ${OBJECTDIR}/_ext/1624479370/Video.o ${OBJECTDIR}/_ext/2129892895/GameDuino.o ${OBJECTDIR}/_ext/179026188/Keyboard.o ${OBJECTDIR}/_ext/1728301206/Main.o ${OBJECTDIR}/_ext/2129892895/RTC.o ${OBJECTDIR}/_ext/1728301206/Setup.o ${OBJECTDIR}/_ext/1728301206/Term.o ${OBJECTDIR}/_ext/1123757107/Timers.o ${OBJECTDIR}/_ext/1091586137/serial.o ${OBJECTDIR}/_ext/2129892895/CAN.o
 
 
 CFLAGS=
 ASFLAGS=
 LDLIBSOPTIONS=
 
+# Path to java used to run MPLAB X when this makefile was created
+MP_JAVA_PATH="C:\Program Files (x86)\Java\jre6/bin/"
+OS_CURRENT="$(shell uname -s)"
 ############# Tool locations ##########################################
 # If you copy a project from one host to another, the path where the  #
 # compiler is installed may be different.                             #
 # If you open this project with MPLAB X in the new host, this         #
 # makefile will be regenerated and the paths will be corrected.       #
 #######################################################################
+MP_CC="C:\Program Files (x86)\Microchip\mplabc32\v2.02\bin\pic32-gcc.exe"
+# MP_BC is not defined
+MP_AS="C:\Program Files (x86)\Microchip\mplabc32\v2.02\bin\pic32-as.exe"
+MP_LD="C:\Program Files (x86)\Microchip\mplabc32\v2.02\bin\pic32-ld.exe"
+MP_AR="C:\Program Files (x86)\Microchip\mplabc32\v2.02\bin\pic32-ar.exe"
+DEP_GEN=${MP_JAVA_PATH}java -jar "C:/Program Files (x86)/Microchip/MPLABX/mplab_ide/mplab_ide/modules/../../bin/extractobjectdependencies.jar" 
 # fixDeps replaces a bunch of sed/cat/printf statements that slow down the build
 FIXDEPS=fixDeps
+MP_CC_DIR="C:\Program Files (x86)\Microchip\mplabc32\v2.02\bin"
+# MP_BC_DIR is not defined
+MP_AS_DIR="C:\Program Files (x86)\Microchip\mplabc32\v2.02\bin"
+MP_LD_DIR="C:\Program Files (x86)\Microchip\mplabc32\v2.02\bin"
+MP_AR_DIR="C:\Program Files (x86)\Microchip\mplabc32\v2.02\bin"
+# MP_BC_DIR is not defined
 
 .build-conf:  ${BUILD_SUBPROJECTS}
 	${MAKE}  -f nbproject/Makefile-OLIMEX.mk dist/${CND_CONF}/${IMAGE_TYPE}/Maximite-Olimex.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
@@ -231,6 +245,11 @@ ${OBJECTDIR}/_ext/1091586137/serial.o: ../Source/Serial/serial.c  nbproject/Make
 	@${RM} ${OBJECTDIR}/_ext/1091586137/serial.o.d 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1091586137/serial.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -DPIC32MX795F512L_PIM -DOLIMEX -DOLIMEX_DUINOMITE_EMEGA -I"../Source" -I"../Source/SDCard/Microchip/Include" -I"../Source/USB" -I"../Source/USB/Microchip/Include" -I"../Source/SDCard" -I"../Source/SDCard/Microchip/Include/MDD File System" -I"../Source/USB/Microchip/Include/USB" -I"../Source/Video" -I"../Source/MMBasic" -I"../Source/Serial" -I"../Source/Timers" -I"../Source/Keyboard" -I"C:/Program Files/Microchip/mplabc32/v1.1b/pic32mx/include" -O3 -Wall -MMD -MF "${OBJECTDIR}/_ext/1091586137/serial.o.d" -o ${OBJECTDIR}/_ext/1091586137/serial.o ../Source/Serial/serial.c   -funsigned-char
 	
+${OBJECTDIR}/_ext/2129892895/CAN.o: ../Source/DuinoMite/CAN.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/_ext/2129892895 
+	@${RM} ${OBJECTDIR}/_ext/2129892895/CAN.o.d 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/2129892895/CAN.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -DPIC32MX795F512L_PIM -DOLIMEX -I"../Source" -I"../Source/SDCard/Microchip/Include" -I"../Source/USB" -I"../Source/USB/Microchip/Include" -I"../Source/SDCard" -I"../Source/SDCard/Microchip/Include/MDD File System" -I"../Source/USB/Microchip/Include/USB" -I"../Source/Video" -I"../Source/MMBasic" -I"../Source/Serial" -I"../Source/Timers" -I"../Source/Keyboard" -I"C:/Program Files/Microchip/mplabc32/v1.1b/pic32mx/include" -O3 -Wall -MMD -MF "${OBJECTDIR}/_ext/2129892895/CAN.o.d" -o ${OBJECTDIR}/_ext/2129892895/CAN.o ../Source/DuinoMite/CAN.c   -funsigned-char
+	
 else
 ${OBJECTDIR}/_ext/2012694729/Commands.o: ../Source/MMBasic/Commands.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR}/_ext/2012694729 
@@ -382,6 +401,11 @@ ${OBJECTDIR}/_ext/1091586137/serial.o: ../Source/Serial/serial.c  nbproject/Make
 	@${RM} ${OBJECTDIR}/_ext/1091586137/serial.o.d 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1091586137/serial.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -DPIC32MX795F512L_PIM -DOLIMEX -DOLIMEX_DUINOMITE_EMEGA -I"../Source" -I"../Source/SDCard/Microchip/Include" -I"../Source/USB" -I"../Source/USB/Microchip/Include" -I"../Source/SDCard" -I"../Source/SDCard/Microchip/Include/MDD File System" -I"../Source/USB/Microchip/Include/USB" -I"../Source/Video" -I"../Source/MMBasic" -I"../Source/Serial" -I"../Source/Timers" -I"../Source/Keyboard" -I"C:/Program Files/Microchip/mplabc32/v1.1b/pic32mx/include" -O3 -Wall -MMD -MF "${OBJECTDIR}/_ext/1091586137/serial.o.d" -o ${OBJECTDIR}/_ext/1091586137/serial.o ../Source/Serial/serial.c   -funsigned-char
 	
+${OBJECTDIR}/_ext/2129892895/CAN.o: ../Source/DuinoMite/CAN.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/_ext/2129892895 
+	@${RM} ${OBJECTDIR}/_ext/2129892895/CAN.o.d 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/2129892895/CAN.o.d" $(SILENT) -c ${MP_CC} $(MP_EXTRA_CC_PRE)  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -DPIC32MX795F512L_PIM -DOLIMEX -I"../Source" -I"../Source/SDCard/Microchip/Include" -I"../Source/USB" -I"../Source/USB/Microchip/Include" -I"../Source/SDCard" -I"../Source/SDCard/Microchip/Include/MDD File System" -I"../Source/USB/Microchip/Include/USB" -I"../Source/Video" -I"../Source/MMBasic" -I"../Source/Serial" -I"../Source/Timers" -I"../Source/Keyboard" -I"C:/Program Files/Microchip/mplabc32/v1.1b/pic32mx/include" -O3 -Wall -MMD -MF "${OBJECTDIR}/_ext/2129892895/CAN.o.d" -o ${OBJECTDIR}/_ext/2129892895/CAN.o ../Source/DuinoMite/CAN.c   -funsigned-char
+	
 endif
 
 # ------------------------------------------------------------------------------------
@@ -401,12 +425,8 @@ endif
 # Subprojects
 .build-subprojects:
 
-
-# Subprojects
-.clean-subprojects:
-
 # Clean Targets
-.clean-conf: ${CLEAN_SUBPROJECTS}
+.clean-conf:
 	${RM} -r build/OLIMEX
 	${RM} -r dist/OLIMEX
 

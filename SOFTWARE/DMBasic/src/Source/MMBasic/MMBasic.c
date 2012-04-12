@@ -26,6 +26,7 @@ If not, see <http://www.gnu.org/licenses/>.
 #include "../Keyboard/Keyboard.h"
 #include "../Timers/Timers.h"
 #include "../DuinoMite/RTC.h"
+#include "../DuinoMite/CAN.h"
 
 #define INCLUDE_FUNCTION_DEFINES
 #include "Functions.h"
@@ -44,6 +45,7 @@ If not, see <http://www.gnu.org/licenses/>.
 #include "Help.h"
 #include "../DuinoMite/RTC.h"
 #include "../DuinoMite/GameDuino.h"
+#include "../DuinoMite/CAN.h"
 #undef INCLUDE_FUNCTION_DEFINES
 
 
@@ -68,6 +70,7 @@ struct s_tokentbl commandtbl[] = {
 #include "Help.h"
 #include "../DuinoMite/RTC.h"
 #include "../DuinoMite/GameDuino.h"
+#include "../DuinoMite/CAN.h"
     { "", 0, 0, cmd_null,} // this dummy entry is always at the end
 };
 #undef INCLUDE_COMMAND_TABLE
@@ -92,6 +95,7 @@ struct s_tokentbl tokentbl[] = {
 #include "XModem.h"
 #include "../DuinoMite/RTC.h"
 #include "../DuinoMite/GameDuino.h"
+#include "../DuinoMite/CAN.h"
     { "", 0, 0, cmd_null,} // this dummy entry is always at the end
 };
 #undef INCLUDE_TOKEN_TABLE
