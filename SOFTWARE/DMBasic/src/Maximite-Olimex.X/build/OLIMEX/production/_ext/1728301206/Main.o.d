@@ -1,6 +1,6 @@
 build/OLIMEX/production/_ext/1728301206/Main.o: ../Source/Main.c \
   ../Source/Maximite.h ../Source/Configuration\ Bits.h \
-  ../Source/IOPorts.h ../Source/IOPorts\ -\ Olimex.h \
+  ../Source/IOPorts.h ../Source/IOPorts\ -\ Olimex\ DuinoMite\ eMega.h \
   ../Source/MMBasic/MMBasic.h ../Source/MMBasic/../MMBasic/Files.h \
   ../Source/MMBasic/../Maximite.h ../Source/MMBasic/External.h \
   ../Source/Video/Video.h ../Source/Keyboard/Keyboard.h \

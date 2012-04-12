@@ -1,6 +1,7 @@
 build/OLIMEX/production/_ext/1091586137/serial.o:  \
  ../Source/Serial/serial.c ../Source/Serial/../Maximite.h \
-  ../Source/Serial/../IOPorts.h ../Source/Serial/../IOPorts\ -\ Olimex.h \
+  ../Source/Serial/../IOPorts.h \
+  ../Source/Serial/../IOPorts\ -\ Olimex\ DuinoMite\ eMega.h \
   ../Source/Serial/../MMBasic/MMBasic.h \
   ../Source/Serial/../MMBasic/../MMBasic/Files.h \
   ../Source/Serial/../MMBasic/../Maximite.h \

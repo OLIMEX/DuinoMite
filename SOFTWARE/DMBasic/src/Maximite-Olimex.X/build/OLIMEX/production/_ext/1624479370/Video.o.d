@@ -1,6 +1,7 @@
 build/OLIMEX/production/_ext/1624479370/Video.o: ../Source/Video/Video.c \
   ../Source/Video/./Video.h ../Source/Video/../Maximite.h \
-  ../Source/Video/../IOPorts.h ../Source/Video/../IOPorts\ -\ Olimex.h \
+  ../Source/Video/../IOPorts.h \
+  ../Source/Video/../IOPorts\ -\ Olimex\ DuinoMite\ eMega.h \
   ../Source/Video/../Setup.h ../Source/./USB/Microchip/Include/USB/usb.h \
   ../Source/SDCard/Microchip/Include/Compiler.h \
   ../Source/USB/./../USB/usb_config.h \

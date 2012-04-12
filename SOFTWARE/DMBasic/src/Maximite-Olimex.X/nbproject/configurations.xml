@@ -134,7 +134,7 @@
     <conf name="OLIMEX" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <targetDevice>PIC32MX795F512H</targetDevice>
+        <targetDevice>PIC32MX795F512L</targetDevice>
         <targetHeader></targetHeader>
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>C32</languageToolchain>
@@ -172,7 +172,8 @@
         <property key="place-data-into-section" value="false"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
-        <property key="preprocessor-macros" value="PIC32MX795F512L_PIM;OLIMEX"/>
+        <property key="preprocessor-macros"
+                  value="PIC32MX795F512L_PIM;OLIMEX;OLIMEX_DUINOMITE_EMEGA"/>
         <property key="strict-ansi" value="false"/>
         <property key="support-ansi" value="false"/>
         <property key="use-indirect-calls" value="false"/>

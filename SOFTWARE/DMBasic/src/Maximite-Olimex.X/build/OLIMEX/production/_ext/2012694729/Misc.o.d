@@ -5,9 +5,9 @@ build/OLIMEX/production/_ext/2012694729/Misc.o: ../Source/MMBasic/Misc.c \
   ../Source/MMBasic/External.h ../Source/MMBasic/Misc.h \
   ../Source/MMBasic/Files.h ../Source/MMBasic/I2C.h \
   ../Source/MMBasic/../IOPorts.h \
-  ../Source/MMBasic/../IOPorts\ -\ Olimex.h \
+  ../Source/MMBasic/../IOPorts\ -\ Olimex\ DuinoMite\ eMega.h \
   ../Source/MMBasic/../SDCard/HardwareProfile.h ../Source/Maximite.h \
-  ../Source/IOPorts.h ../Source/IOPorts\ -\ Olimex.h \
+  ../Source/IOPorts.h ../Source/IOPorts\ -\ Olimex\ DuinoMite\ eMega.h \
   ../Source/MMBasic/../Video/Video.h ../Source/MMBasic/../SDCard/SDCard.h \
   ../Source/SDCard/Microchip/Include/MDD\ File\ System/FSDefs.h \
   ../Source/MMBasic/../Timers/Timers.h \

@@ -874,8 +874,9 @@ void clearprog(void) {
 
 char *findline(int nbr, int mustfind)
 {
+#undef  OLIMEX
 // SPP +
-    #ifdef  OLIMEX_DUINOMITE_EMEGA
+    #ifdef  OLIMEX
     unsigned char *p;   // edit by SPP
     #else
     char *p;         // original
@@ -892,7 +893,7 @@ char *findline(int nbr, int mustfind)
             break;
         }
     // SPP +
-    #ifdef  OLIMEX_DUINOMITE_EMEGA
+    #ifdef  OLIMEX
         if (p[0] >= T_LINENBR)    // edin by SPP
     #else
         if (p[0] == T_LINENBR)    // original
@@ -908,6 +909,7 @@ char *findline(int nbr, int mustfind)
     if (mustfind && i != nbr) error("Invalid line number");
     return p;
 }
+#define OLIMEX
 
 
 
