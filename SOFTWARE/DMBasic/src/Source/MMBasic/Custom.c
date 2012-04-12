@@ -506,7 +506,11 @@ void fun_mmOW(void) {
 
 void ow_pinChk(int pin) {
 	#ifdef OLIMEX
+            #ifdef OLIMEX_DUINOMITE_EMEGA
+		if ((pin < 1) || (pin > NBRPINS)) error("Invalid I/O pin"); // CHECK
+            #else
 		if ((pin < 1) || (pin > NBRPINS) || (pin == 11)) error("Invalid I/O pin");
+            #endif
 	#else
 		if ((pin < 11) || (pin > NBRPINS)) error("Invalid I/O pin");
 	#endif
@@ -983,7 +987,7 @@ void ow_onOCPin(int pin) {
 		case 18: P_E18_ODCON; return;
 		case 19: P_E19_ODCON; return;
 		case 20: P_E20_ODCON; return;
-#ifdef UBW32
+	#if defined UBW32 || defined OLIMEX_DUINOMITE_EMEGA
 		case 21: P_E21_ODCON;	return;
 		case 22: P_E22_ODCON;	return;
 		case 23: P_E23_ODCON;	return;
@@ -1003,6 +1007,8 @@ void ow_onOCPin(int pin) {
 		case 37: P_E37_ODCON;	return;
 		case 38: P_E38_ODCON;	return;
 		case 39: P_E39_ODCON;	return;
+	#endif
+	#ifdef UBW32
 		case 40: P_E40_ODCON;	return;
 		case 41: P_E41_ODCON;	return;
 		case 42: P_E42_ODCON;	return;
@@ -1018,8 +1024,6 @@ void ow_onOCPin(int pin) {
 	}
 	return;
 }
-
-
 void ow_offOCPin(int pin) {
 	switch(pin) {
 		case 1:  P_E1_ODCOFF;  return;
@@ -1042,7 +1046,7 @@ void ow_offOCPin(int pin) {
 		case 18: P_E18_ODCOFF; return;
 		case 19: P_E19_ODCOFF; return;
 		case 20: P_E20_ODCOFF; return;
-#ifdef UBW32
+	#if defined UBW32 || defined OLIMEX_DUINOMITE_EMEGA
 		case 21: P_E21_ODCOFF;	return;
 		case 22: P_E22_ODCOFF;	return;
 		case 23: P_E23_ODCOFF;	return;
@@ -1062,6 +1066,8 @@ void ow_offOCPin(int pin) {
 		case 37: P_E37_ODCOFF;	return;
 		case 38: P_E38_ODCOFF;	return;
 		case 39: P_E39_ODCOFF;	return;
+	#endif
+	#ifdef UBW32
 		case 40: P_E40_ODCOFF;	return;
 		case 41: P_E41_ODCOFF;	return;
 		case 42: P_E42_ODCOFF;	return;
@@ -1101,7 +1107,7 @@ void ow_setPin(int pin) {
 		case 18: P_E18_WRITE1; return;
 		case 19: P_E19_WRITE1; return;
 		case 20: P_E20_WRITE1; return;
-#ifdef UBW32
+	#if defined UBW32 || defined OLIMEX_DUINOMITE_EMEGA
 		case 21: P_E21_WRITE1;	return;
 		case 22: P_E22_WRITE1;	return;
 		case 23: P_E23_WRITE1;	return;
@@ -1121,6 +1127,8 @@ void ow_setPin(int pin) {
 		case 37: P_E37_WRITE1;	return;
 		case 38: P_E38_WRITE1;	return;
 		case 39: P_E39_WRITE1;	return;
+	#endif
+	#ifdef UBW32
 		case 40: P_E40_WRITE1;	return;
 		case 41: P_E41_WRITE1;	return;
 		case 42: P_E42_WRITE1;	return;
@@ -1160,7 +1168,7 @@ void ow_clrPin(int pin) {
 		case 18: P_E18_WRITE0; return;
 		case 19: P_E19_WRITE0; return;
 		case 20: P_E20_WRITE0; return;
-#ifdef UBW32
+	#if defined UBW32 || defined OLIMEX_DUINOMITE_EMEGA
 		case 21: P_E21_WRITE0;	return;
 		case 22: P_E22_WRITE0;	return;
 		case 23: P_E23_WRITE0;	return;
@@ -1180,6 +1188,8 @@ void ow_clrPin(int pin) {
 		case 37: P_E37_WRITE0;	return;
 		case 38: P_E38_WRITE0;	return;
 		case 39: P_E39_WRITE0;	return;
+	#endif
+	#ifdef UBW32
 		case 40: P_E40_WRITE0;	return;
 		case 41: P_E41_WRITE0;	return;
 		case 42: P_E42_WRITE0;	return;
@@ -1219,7 +1229,7 @@ void ow_inputPin(int pin) {
 		case 18: P_E18_TRISINP; return;
 		case 19: P_E19_TRISINP; return;
 		case 20: P_E20_TRISINP; return;
-#ifdef UBW32
+	#if defined UBW32 || defined OLIMEX_DUINOMITE_EMEGA
 		case 21: P_E21_TRISINP;	return;
 		case 22: P_E22_TRISINP;	return;
 		case 23: P_E23_TRISINP;	return;
@@ -1239,6 +1249,8 @@ void ow_inputPin(int pin) {
 		case 37: P_E37_TRISINP;	return;
 		case 38: P_E38_TRISINP;	return;
 		case 39: P_E39_TRISINP;	return;
+	#endif
+	#ifdef UBW32
 		case 40: P_E40_TRISINP;	return;
 		case 41: P_E41_TRISINP;	return;
 		case 42: P_E42_TRISINP;	return;
@@ -1278,7 +1290,7 @@ void ow_outputPin(int pin) {
 		case 18: P_E18_TRISOUT; return;
 		case 19: P_E19_TRISOUT; return;
 		case 20: P_E20_TRISOUT; return;
-#ifdef UBW32
+	#if defined UBW32 || defined OLIMEX_DUINOMITE_EMEGA
 		case 21: P_E21_TRISOUT;	return;
 		case 22: P_E22_TRISOUT;	return;
 		case 23: P_E23_TRISOUT;	return;
@@ -1298,6 +1310,8 @@ void ow_outputPin(int pin) {
 		case 37: P_E37_TRISOUT;	return;
 		case 38: P_E38_TRISOUT;	return;
 		case 39: P_E39_TRISOUT;	return;
+	#endif
+	#ifdef UBW32
 		case 40: P_E40_TRISOUT;	return;
 		case 41: P_E41_TRISOUT;	return;
 		case 42: P_E42_TRISOUT;	return;
@@ -1337,7 +1351,7 @@ int ow_readPin(int pin) {
 		case 18: return P_E18_READ;
 		case 19: return P_E19_READ;
 		case 20: return P_E20_READ;
-#ifdef UBW32
+	#if defined UBW32 || defined OLIMEX_DUINOMITE_EMEGA
 		case 21: return P_E21_READ;
 		case 22: return P_E22_READ;
 		case 23: return P_E23_READ;
@@ -1357,6 +1371,8 @@ int ow_readPin(int pin) {
 		case 37: return P_E37_READ;
 		case 38: return P_E38_READ;
 		case 39: return P_E39_READ;
+	#endif
+	#ifdef UBW32
 		case 40: return P_E40_READ;
 		case 41: return P_E41_READ;
 		case 42: return P_E42_READ;
@@ -1372,6 +1388,188 @@ int ow_readPin(int pin) {
 	}
 	return 0;
 }
+
+// SPP +
+#if defined OLIMEX_DUINOMITE_EMEGA
+int ow_isAnalogPin(int pin)
+{
+	switch(pin)
+	{
+		case 1:  return P_E1_AN_FUN;
+		case 2:  return P_E2_AN_FUN;
+		case 3:  return P_E3_AN_FUN;
+		case 4:	 return P_E4_AN_FUN;
+		case 5:	 return P_E5_AN_FUN;
+		case 6:	 return P_E6_AN_FUN;
+		case 7:	 return P_E7_AN_FUN;
+		case 8:	 return P_E8_AN_FUN;
+		case 9:	 return P_E9_AN_FUN;
+		case 10: return P_E10_AN_FUN;
+		case 11: return P_E11_AN_FUN;
+		case 12: return P_E12_AN_FUN;
+		case 13: return P_E13_AN_FUN;
+		case 14: return P_E14_AN_FUN;
+		case 15: return P_E15_AN_FUN;
+		case 16: return P_E16_AN_FUN;
+		case 17: return P_E17_AN_FUN;
+		case 18: return P_E18_AN_FUN;
+		case 19: return P_E19_AN_FUN;
+		case 20: return P_E20_AN_FUN;
+		case 21: return P_E21_AN_FUN;
+		case 22: return P_E22_AN_FUN;
+		case 23: return P_E23_AN_FUN;
+		case 24: return P_E24_AN_FUN;
+		case 25: return P_E25_AN_FUN;
+		case 26: return P_E26_AN_FUN;
+		case 27: return P_E27_AN_FUN;
+		case 28: return P_E28_AN_FUN;
+		case 29: return P_E29_AN_FUN;
+		case 30: return P_E30_AN_FUN;
+		case 31: return P_E31_AN_FUN;
+		case 32: return P_E32_AN_FUN;
+		case 33: return P_E33_AN_FUN;
+		case 34: return P_E34_AN_FUN;
+		case 35: return P_E35_AN_FUN;
+		case 36: return P_E35_AN_FUN;
+		case 37: return P_E35_AN_FUN;
+		case 38: return P_E35_AN_FUN;
+		case 39: return P_E35_AN_FUN;
+	}
+	return 0;
+}
+
+
+void ow_PinFunction(int pin, int function)
+{
+	int Mask;
+	switch(pin)
+	{
+		#if P_E1_AN_FUN
+		case 1: Mask = 1<<P_E1_ACHAN; break;
+		#endif
+		#if P_E2_AN_FUN
+		case 2: Mask = 1<<P_E2_ACHAN; break;
+		#endif
+		#if P_E3_AN_FUN
+		case 3: Mask = 1<<P_E3_ACHAN; break;
+		#endif
+		#if P_E4_AN_FUN
+		case 4: Mask = 1<<P_E4_ACHAN; break;
+		#endif
+		#if P_E5_AN_FUN
+		case 5: Mask = 1<<P_E5_ACHAN; break;
+		#endif
+		#if P_E6_AN_FUN
+		case 6: Mask = 1<<P_E6_ACHAN; break;
+		#endif
+		#if P_E7_AN_FUN
+		case 7: Mask = 1<<P_E7_ACHAN; break;
+		#endif
+		#if P_E8_AN_FUN
+		case 8: Mask = 1<<P_E8_ACHAN; break;
+		#endif
+		#if P_E9_AN_FUN
+		case 9: Mask = 1<<P_E9_ACHAN; break;
+		#endif
+		#if P_E10_AN_FUN
+		case 10: Mask = 1<<P_E10_ACHAN; break;
+		#endif
+		#if P_E11_AN_FUN
+		case 11: Mask = 1<<P_E11_ACHAN; break;
+		#endif
+		#if P_E21_AN_FUN
+		case 12: Mask = 1<<P_E12_ACHAN; break;
+		#endif
+		#if P_E13_AN_FUN
+		case 13: Mask = 1<<P_E13_ACHAN; break;
+		#endif
+		#if P_E14_AN_FUN
+		case 14: Mask = 1<<P_E14_ACHAN; break;
+		#endif
+		#if P_E15_AN_FUN
+		case 15: Mask = 1<<P_E15_ACHAN; break;
+		#endif
+		#if P_E16_AN_FUN
+		case 16: Mask = 1<<P_E16_ACHAN; break;
+		#endif
+		#if P_E17_AN_FUN
+		case 17: Mask = 1<<P_E17_ACHAN; break;
+		#endif
+		#if P_E18_AN_FUN
+		case 18: Mask = 1<<P_E18_ACHAN; break;
+		#endif
+		#if P_E19_AN_FUN
+		case 19: Mask = 1<<P_E19_ACHAN; break;
+		#endif
+		#if P_E20_AN_FUN
+		case 20: Mask = 1<<P_E20_ACHAN; break;
+		#endif
+		#if P_E21_AN_FUN
+		case 21: Mask = 1<<P_E21_ACHAN; break;
+		#endif
+		#if P_E22_AN_FUN
+		case 22: Mask = 1<<P_E22_ACHAN; break;
+		#endif
+		#if P_E23_AN_FUN
+		case 23: Mask = 1<<P_E23_ACHAN; break;
+		#endif
+		#if P_E24_AN_FUN
+		case 24: Mask = 1<<P_E24_ACHAN; break;
+		#endif
+		#if P_E25_AN_FUN
+		case 25: Mask = 1<<P_E25_ACHAN; break;
+		#endif
+		#if P_E26_AN_FUN
+		case 26: Mask = 1<<P_E26_ACHAN; break;
+		#endif
+		#if P_E27_AN_FUN
+		case 27: Mask = 1<<P_E27_ACHAN; break;
+		#endif
+		#if P_E28_AN_FUN
+		case 28: Mask = 1<<P_E28_ACHAN; break;
+		#endif
+		#if P_E29_AN_FUN
+		case 29: Mask = 1<<P_E29_ACHAN; break;
+		#endif
+		#if P_E30_AN_FUN
+		case 30: Mask = 1<<P_E30_ACHAN; break;
+		#endif
+		#if P_E31_AN_FUN
+		case 31: Mask = 1<<P_E31_ACHAN; break;
+		#endif
+		#if P_E32_AN_FUN
+		case 32: Mask = 1<<P_E32_ACHAN; break;
+		#endif
+		#if P_E33_AN_FUN
+		case 33: Mask = 1<<P_E33_ACHAN; break;
+		#endif
+		#if P_E34_AN_FUN
+		case 34: Mask = 1<<P_E34_ACHAN; break;
+		#endif
+		#if P_E35_AN_FUN
+		case 35: Mask = 1<<P_E35_ACHAN; break;
+		#endif
+		#if P_E36_AN_FUN
+		case 36: Mask = 1<<P_E36_ACHAN; break;
+		#endif
+		#if P_E37_AN_FUN
+		case 37: Mask = 1<<P_E37_ACHAN; break;
+		#endif
+		#if P_E38_AN_FUN
+		case 38: Mask = 1<<P_E38_ACHAN; break;
+		#endif
+		#if P_E39_AN_FUN
+		case 39: Mask = 1<<P_E39_ACHAN; break;
+		#endif
+		default: Mask = 0;	break;
+	}
+	if (function)
+		AD1PCFGSET = Mask;
+	else
+		AD1PCFGCLR = Mask;
+}
+#endif
+// SPP -
 
 //	GS OW End
 

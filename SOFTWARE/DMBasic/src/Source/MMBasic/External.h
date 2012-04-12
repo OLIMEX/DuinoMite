@@ -94,7 +94,13 @@ extern void ClearExternalIO(void);
 	#define NBRPINS				50				// number of pins for external i/o
 #endif
 #ifdef OLIMEX
-	#define NBRPINS				24
+	// SPP +
+	#ifdef	OLIMEX_DUINOMITE_EMEGA
+		#define NBRPINS				39
+	#else
+		#define NBRPINS				24
+	#endif
+	// SPP -
 #endif
 
 extern int ExtCurrentConfig[NBRPINS + 1];

@@ -34,6 +34,12 @@ If not, see <http://www.gnu.org/licenses/>.
 	#include "IOPorts - UBW32.h"
 #endif
 
-#ifdef OLIMEX
-        #include "IOPorts - Olimex.h"
+#ifdef  OLIMEX
+    // SPP +
+    #ifdef OLIMEX_DUINOMITE_EMEGA
+            #include "IOPorts - Olimex DuinoMite eMega.h"
+    #else
+            #include "IOPorts - Olimex.h"
+    #endif
+    // SPP -
 #endif

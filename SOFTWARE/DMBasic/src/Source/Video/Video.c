@@ -128,9 +128,17 @@ void initVideo( void) {
 #ifdef MAXIMITE
 	    OpenOC3(OC_ON | OC_TIMER3_SRC | OC_CONTINUE_PULSE, 0, VGA_HSYNC_T);
 #endif
+// SPP +
 #ifdef OLIMEX
+	#ifdef	OLIMEX_DUINOMITE_EMEGA	// patch for eMega
+	    OpenOC3(OC_ON | OC_TIMER3_SRC | OC_CONTINUE_PULSE, 0, VGA_HSYNC_T);
+	#else	// original by Geoff Graham for DuinoMite-Mega
 	    OpenOC5(OC_ON | OC_TIMER3_SRC | OC_CONTINUE_PULSE, 0, VGA_HSYNC_T);
+	#endif
+#else
+	    OpenOC3(OC_ON | OC_TIMER3_SRC | OC_CONTINUE_PULSE, 0, VGA_HSYNC_T);
 #endif
+// SPP -
 	    // enable timer 3 and set to the horizontal scanning frequency
 	    OpenTimer3( T3_ON | T3_PS_1_1 | T3_SOURCE_INT, VGA_LINE_T-1);
 	} else {	// this is for the composite output and is the same as VGA with timing differences

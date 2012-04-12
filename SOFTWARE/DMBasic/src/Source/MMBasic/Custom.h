@@ -129,6 +129,14 @@ void ow_clrPin(int pin);
 void ow_inputPin(int pin);
 void ow_outputPin(int pin);
 int ow_readPin(int pin);
+
+// SPP +
+#if defined OLIMEX_DUINOMITE_EMEGA
+//int ow_isAnalogPin(int pin);
+void ow_PinFunction(int pin, int function);
+#endif
+// SPP -
+
 //	GS OW End
 
 // Ingmar's additions start
