@@ -4,7 +4,8 @@ build/OLIMEX/production/_ext/2012694729/MMBasic.o:  \
   ../Source/MMBasic/../Video/Video.h \
   ../Source/MMBasic/../Keyboard/Keyboard.h \
   ../Source/MMBasic/../Timers/Timers.h \
-  ../Source/MMBasic/../DuinoMite/RTC.h ../Source/MMBasic/Functions.h \
+  ../Source/MMBasic/../DuinoMite/RTC.h \
+  ../Source/MMBasic/../DuinoMite/CAN.h ../Source/MMBasic/Functions.h \
   ../Source/MMBasic/Commands.h ../Source/MMBasic/Operators.h \
   ../Source/MMBasic/Files.h ../Source/MMBasic/External.h \
   ../Source/MMBasic/Graphics.h ../Source/MMBasic/Misc.h \
