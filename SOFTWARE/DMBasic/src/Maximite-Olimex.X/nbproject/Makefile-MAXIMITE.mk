@@ -9,11 +9,12 @@
 
 # Include project Makefile
 include Makefile
+# Include makefile containing local settings
+ifeq "$(wildcard nbproject/Makefile-local-MAXIMITE.mk)" "nbproject/Makefile-local-MAXIMITE.mk"
+include nbproject/Makefile-local-MAXIMITE.mk
+endif
 
 # Environment
-SHELL=cmd.exe
-# Adding MPLAB X bin directory to path
-PATH:=C:/Program Files (x86)/Microchip/MPLABX/mplab_ide/mplab_ide/modules/../../bin/:$(PATH)
 MKDIR=gnumkdir -p
 RM=rm -f 
 MV=mv 
@@ -51,29 +52,14 @@ CFLAGS=
 ASFLAGS=
 LDLIBSOPTIONS=
 
-# Path to java used to run MPLAB X when this makefile was created
-MP_JAVA_PATH="C:\Program Files (x86)\Java\jre6/bin/"
-OS_CURRENT="$(shell uname -s)"
 ############# Tool locations ##########################################
 # If you copy a project from one host to another, the path where the  #
 # compiler is installed may be different.                             #
 # If you open this project with MPLAB X in the new host, this         #
 # makefile will be regenerated and the paths will be corrected.       #
 #######################################################################
-MP_CC="C:\Program Files (x86)\Microchip\mplabc32\v2.02\bin\pic32-gcc.exe"
-# MP_BC is not defined
-MP_AS="C:\Program Files (x86)\Microchip\mplabc32\v2.02\bin\pic32-as.exe"
-MP_LD="C:\Program Files (x86)\Microchip\mplabc32\v2.02\bin\pic32-ld.exe"
-MP_AR="C:\Program Files (x86)\Microchip\mplabc32\v2.02\bin\pic32-ar.exe"
-DEP_GEN=${MP_JAVA_PATH}java -jar "C:/Program Files (x86)/Microchip/MPLABX/mplab_ide/mplab_ide/modules/../../bin/extractobjectdependencies.jar" 
 # fixDeps replaces a bunch of sed/cat/printf statements that slow down the build
 FIXDEPS=fixDeps
-MP_CC_DIR="C:\Program Files (x86)\Microchip\mplabc32\v2.02\bin"
-# MP_BC_DIR is not defined
-MP_AS_DIR="C:\Program Files (x86)\Microchip\mplabc32\v2.02\bin"
-MP_LD_DIR="C:\Program Files (x86)\Microchip\mplabc32\v2.02\bin"
-MP_AR_DIR="C:\Program Files (x86)\Microchip\mplabc32\v2.02\bin"
-# MP_BC_DIR is not defined
 
 .build-conf:  ${BUILD_SUBPROJECTS}
 	${MAKE}  -f nbproject/Makefile-MAXIMITE.mk dist/${CND_CONF}/${IMAGE_TYPE}/Maximite-Olimex.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
@@ -425,8 +411,12 @@ endif
 # Subprojects
 .build-subprojects:
 
+
+# Subprojects
+.clean-subprojects:
+
 # Clean Targets
-.clean-conf:
+.clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r build/MAXIMITE
 	${RM} -r dist/MAXIMITE
 

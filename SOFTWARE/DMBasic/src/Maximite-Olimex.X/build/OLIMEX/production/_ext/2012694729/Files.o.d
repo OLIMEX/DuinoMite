@@ -8,7 +8,7 @@ build/OLIMEX/production/_ext/2012694729/Files.o:  \
   ../Source/MMBasic/../SDCard/SDCard.h \
   ../Source/SDCard/Microchip/Include/MDD\ File\ System/FSDefs.h \
   ../Source/MMBasic/../SDCard/HardwareProfile.h ../Source/Maximite.h \
-  ../Source/IOPorts.h ../Source/IOPorts\ -\ Olimex\ DuinoMite\ eMega.h \
+  ../Source/IOPorts.h ../Source/IOPorts\ -\ Olimex.h \
   ../Source/MMBasic/../Timers/Timers.h \
   ../Source/MMBasic/../Serial/Serial.h ../Source/MMBasic/../Video/Video.h \
   ../Source/Setup.h

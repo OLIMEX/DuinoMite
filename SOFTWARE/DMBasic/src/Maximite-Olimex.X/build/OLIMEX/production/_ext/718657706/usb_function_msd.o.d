@@ -14,7 +14,7 @@ build/OLIMEX/production/_ext/718657706/usb_function_msd.o:  \
   ../Source/SDCard/FSconfig.h \
   ../Source/SDCard/Microchip/Include/Compiler.h \
   ../Source/SDCard/HardwareProfile.h ../Source/Maximite.h \
-  ../Source/IOPorts.h ../Source/IOPorts\ -\ Olimex\ DuinoMite\ eMega.h \
+  ../Source/IOPorts.h ../Source/IOPorts\ -\ Olimex.h \
   ../Source/USB/Microchip/Include/USB/usb_function_msd.h \
   ../Source/SDCard/Microchip/Include/MDD\ File\ System/FSDefs.h \
   ../Source/SDCard/Microchip/Include/MDD\ File\ System/SD-SPI.h \

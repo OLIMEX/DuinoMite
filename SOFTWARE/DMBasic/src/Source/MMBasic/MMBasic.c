@@ -878,14 +878,7 @@ void clearprog(void) {
 
 char *findline(int nbr, int mustfind)
 {
-#undef  OLIMEX
-// SPP +
-    #ifdef  OLIMEX
-    unsigned char *p;   // edit by SPP
-    #else
-    char *p;         // original
-    #endif
-// SPP -
+    char *p;
     int i;
 
     p = pmemory;
@@ -896,13 +889,7 @@ char *findline(int nbr, int mustfind)
             // p++;
             break;
         }
-    // SPP +
-    #ifdef  OLIMEX
-        if (p[0] >= T_LINENBR)    // edin by SPP
-    #else
-        if (p[0] == T_LINENBR)    // original
-    #endif
-    // SPP -
+        if (p[0] == T_LINENBR)
         {
             i = (p[1] << 8) | p[2];
             if (i >= nbr) break;
@@ -913,7 +900,6 @@ char *findline(int nbr, int mustfind)
     if (mustfind && i != nbr) error("Invalid line number");
     return p;
 }
-#define OLIMEX
 
 
 
