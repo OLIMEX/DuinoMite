@@ -268,8 +268,8 @@ int ExtCfg(int pin, int cfg) {
 
 	// make sure that interrupts are disabled in case we are changing from an interrupt input
 #ifdef OLIMEX
-//	if (pin == 5) ConfigINT2(EXT_INT_PRI_2 | RISING_EDGE_INT | EXT_INT_DISABLE);
-//	if (pin == 6) ConfigINT3(EXT_INT_PRI_2 | RISING_EDGE_INT | EXT_INT_DISABLE);
+	if (pin == 5) ConfigINT2(EXT_INT_PRI_2 | RISING_EDGE_INT | EXT_INT_DISABLE);
+	if (pin == 6) ConfigINT3(EXT_INT_PRI_2 | RISING_EDGE_INT | EXT_INT_DISABLE);
         #ifdef  OLIMEX_DUINOMITE_EMEGA
         #else
                 if (pin == 7) ConfigINT4(EXT_INT_PRI_2 | RISING_EDGE_INT | EXT_INT_DISABLE);
@@ -285,62 +285,61 @@ int ExtCfg(int pin, int cfg) {
 
 	switch (cfg) {
 		case EXT_NOT_CONFIG:
-//	#ifdef OLIMEX
-//			if (pin == 5) {P_E5_TRIS = 1; P_E5_OC = 1;}
-//			if (pin == 6) {P_E6_TRIS = 1; P_E6_OC = 1;}
-//			if (pin == 11) {P_E11_TRIS = 1; P_E11_OC = 1;}
-//			if (pin == 12) {P_E12_TRIS = 1; P_E12_OC = 1;}
-//	#endif
+	#ifdef OLIMEX
+			if (pin == 5) {P_E5_TRIS = 1; P_E5_OC = 1;}
+			if (pin == 6) {P_E6_TRIS = 1; P_E6_OC = 1;}
+			if (pin == 11) {P_E11_TRIS = 1; P_E11_OC = 1;}
+			if (pin == 12) {P_E12_TRIS = 1; P_E12_OC = 1;}
+	#endif
 			tris = 1; ana = 1; oc = 1;
 			break;
 
 		case EXT_ANA_IN:
-//	#ifdef OLIMEX
+	#ifdef OLIMEX
 			if (pin > 6 && pin < 19) return false;
-//			if (pin == 5) {P_E5_TRIS = 1; P_E5_OC = 1;}
-//			if (pin == 6) {P_E6_TRIS = 1; P_E6_OC = 1;}
-//	#else
-//			if (pin > 10) return false;
-//	#endif
+			if (pin == 5) {P_E5_TRIS = 1; P_E5_OC = 1;}
+			if (pin == 6) {P_E6_TRIS = 1; P_E6_OC = 1;}
+	#else
+			if (pin > 10) return false;
+	#endif
 			tris = 1; ana = 0; oc = 1;
 			break;
 
 		case EXT_FREQ_IN:											// same as counting, so fall through
 		case EXT_PER_IN:											// same as counting, so fall through
 		case EXT_CNT_IN:
-//	#ifdef OLIMEX
-//	#else
-//			if (pin == 11) {
-//				INT1Count = INT1Value = 0;
-//				ConfigINT1(EXT_INT_PRI_2 | RISING_EDGE_INT | EXT_INT_ENABLE);
-//				tris = 1; ana = 1; oc = 1;
-//				break;
-//			}
-//	#endif
-//	#ifdef OLIMEX
-//			if (pin == 5) {
-//				P_E5_TRIS = 1;
-//				P_E5_OC = 1;
-//	#else
-//			if (pin == 12) {
-//	#endif
-//				INT2Count = INT2Value = 0;
-//				ConfigINT2(EXT_INT_PRI_2 | RISING_EDGE_INT | EXT_INT_ENABLE);
-//				tris = 1; ana = 1; oc = 1;
-//				break;
-//			}
-//	#ifdef OLIMEX
-//			if (pin == 6) {
-//				P_E6_TRIS = 1;
-//				P_E6_OC = 1;
-//	#else
-//			if (pin == 13) {
-//	#endif
-//				INT3Count = INT3Value = 0;
-//				ConfigINT3(EXT_INT_PRI_2 | RISING_EDGE_INT | EXT_INT_ENABLE);
-//				tris = 1; ana = 1; oc = 1;
-//				break;
-//			}
+	#ifdef OLIMEX
+	#else
+			if (pin == 11) {
+				INT1Count = INT1Value = 0;
+				ConfigINT1(EXT_INT_PRI_2 | RISING_EDGE_INT | EXT_INT_ENABLE);
+				tris = 1; ana = 1; oc = 1;
+ 			}
+	#endif
+	#ifdef OLIMEX
+			if (pin == 5) {
+				P_E5_TRIS = 1;
+				P_E5_OC = 1;
+	#else
+			if (pin == 12) {
+	#endif
+				INT2Count = INT2Value = 0;
+				ConfigINT2(EXT_INT_PRI_2 | RISING_EDGE_INT | EXT_INT_ENABLE);
+				tris = 1; ana = 1; oc = 1;
+				break;
+			}
+	#ifdef OLIMEX
+			if (pin == 6) {
+				P_E6_TRIS = 1;
+				P_E6_OC = 1;
+	#else
+			if (pin == 13) {
+	#endif
+				INT3Count = INT3Value = 0;
+				ConfigINT3(EXT_INT_PRI_2 | RISING_EDGE_INT | EXT_INT_ENABLE);
+				tris = 1; ana = 1; oc = 1;
+				break;
+			}
 #ifdef  OLIMEX_DUINOMITE_EMEGA
                     break;
 #else
@@ -361,30 +360,30 @@ int ExtCfg(int pin, int cfg) {
 		case EXT_INT_HI:											// same as digital input, so fall through
 		case EXT_DIG_IN:
 	#ifdef OLIMEX
-//                        if (pin == 5) {P_E5_TRIS = 1; P_E5_OC = 1;}
-//			if (pin == 6) {P_E6_TRIS = 1; P_E6_OC = 1;}
-//			if (pin == 11) {P_E11_TRIS = 1; P_E11_OC = 1;}
-//			if (pin == 12) {P_E12_TRIS = 1; P_E12_OC = 1;}
+                        if (pin == 5) {P_E5_TRIS = 1; P_E5_OC = 1;}
+			if (pin == 6) {P_E6_TRIS = 1; P_E6_OC = 1;}
+			if (pin == 11) {P_E11_TRIS = 1; P_E11_OC = 1;}
+			if (pin == 12) {P_E12_TRIS = 1; P_E12_OC = 1;}
 	#endif
 			tris = 1; ana = 1; oc = 1;
 			break;
 
 		case EXT_DIG_OUT:
 	#ifdef OLIMEX
-//			if (pin == 11) {P_E11_TRIS = 1; P_E11_OC = 1;} //return false;
-//			if (pin == 5) {P_E5_TRIS = 1; P_E5_OC = 1;}
-//			if (pin == 6) {P_E6_TRIS = 1; P_E6_OC = 1;}
-//			if (pin == 12) {P_E12_TRIS = 1; P_E12_OC = 1;}
+			if (pin == 11) {P_E11_TRIS = 1; P_E11_OC = 1;} //return false;
+			if (pin == 5) {P_E5_TRIS = 1; P_E5_OC = 1;}
+			if (pin == 6) {P_E6_TRIS = 1; P_E6_OC = 1;}
+			if (pin == 12) {P_E12_TRIS = 1; P_E12_OC = 1;}
 	#endif
 			tris = 0; ana = 1; oc = 0;
 			break;
 
 		case EXT_OC_OUT:
 	#ifdef OLIMEX
-//			if (pin == 11) {P_E11_TRIS = 1; P_E11_OC = 1;} //return false;
-//			if (pin == 5) {P_E5_TRIS = 1; P_E5_OC = 1;}
-//			if (pin == 6) {P_E6_TRIS = 1; P_E6_OC = 1;}
-//			if (pin == 12) {P_E12_TRIS = 1; P_E12_OC = 1;}
+			if (pin == 11) {P_E11_TRIS = 1; P_E11_OC = 1;} //return false;
+			if (pin == 5) {P_E5_TRIS = 1; P_E5_OC = 1;}
+			if (pin == 6) {P_E6_TRIS = 1; P_E6_OC = 1;}
+			if (pin == 12) {P_E12_TRIS = 1; P_E12_OC = 1;}
 	#else
 			if (pin < 11) return false;
 	#endif
@@ -395,10 +394,10 @@ int ExtCfg(int pin, int cfg) {
 		case EXT_CONSOLE_RESERVED:
 			ExtCurrentConfig[pin] = cfg;		// don't do anything except set the config type
 		#ifdef OLIMEX
-//			if (pin == 5) {P_E5_TRIS = 1; P_E5_OC = 1; P_E5_ANALOG = 1;}
-//			if (pin == 6) {P_E6_TRIS = 1; P_E6_OC = 1; P_E6_ANALOG = 1;}
-//			if (pin == 11) {P_E11_TRIS = 1; P_E11_OC = 1;}
-//			if (pin == 12) {P_E12_TRIS = 1; P_E12_OC = 1;}
+			if (pin == 5) {P_E5_TRIS = 1; P_E5_OC = 1; P_E5_ANALOG = 1;}
+			if (pin == 6) {P_E6_TRIS = 1; P_E6_OC = 1; P_E6_ANALOG = 1;}
+			if (pin == 11) {P_E11_TRIS = 1; P_E11_OC = 1;}
+			if (pin == 12) {P_E12_TRIS = 1; P_E12_OC = 1;}
 		#endif
 			return true;
 

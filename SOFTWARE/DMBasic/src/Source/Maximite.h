@@ -21,7 +21,7 @@ If not, see <http://www.gnu.org/licenses/>.
 #ifndef MMHeader
 #define MMHeader
 
-	#define VERSION         "2.7B"					// define the version number
+	#define VERSION         "2.70d"					// define the version number
 	#define YEAR			__DATE__				// current date
 	
 	// The main clock frequency for the chip

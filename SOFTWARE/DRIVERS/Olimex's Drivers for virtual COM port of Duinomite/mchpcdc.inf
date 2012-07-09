@@ -86,10 +86,14 @@ ServiceBinary=%12%\%DRIVERFILENAME%.sys
 [SourceDisksFiles]
 [SourceDisksNames]
 [DeviceList]
-%DESCRIPTION%=DriverInstall, USB\VID_15BA&PID_0033
+%DESCRIPTION1%=DriverInstall, USB\VID_15BA&PID_0035&MI_01
+%DESCRIPTION2%=DriverInstall, USB\VID_15BA&PID_0033
+%DESCRIPTION2%=DriverInstall, USB\VID_15BA&PID_0033
 
 [DeviceList.NTamd64] 
-%DESCRIPTION%=DriverInstall, USB\VID_15BA&PID_0033
+%DESCRIPTION1%=DriverInstall, USB\VID_15BA&PID_0035&MI_01
+%DESCRIPTION2%=DriverInstall, USB\VID_15BA&PID_0033
+%DESCRIPTION2%=DriverInstall, USB\VID_15BA&PID_0033
 
 
 ;------------------------------------------------------------------------------
@@ -102,7 +106,8 @@ MFGFILENAME="Duinocdc"
 DRIVERFILENAME ="usbser"
 MFGNAME="Olimex"
 INSTDISK="Olimex"
-DESCRIPTION="USB Communications Port"
+DESCRIPTION1="Olimex DuinoMite USB Composite Device"
+DESCRIPTION2="Olimex DuinoMite USB CDC"
 SERVICE="USB RS-232 Emulation Driver"
 
 

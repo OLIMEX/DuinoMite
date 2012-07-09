@@ -58,7 +58,7 @@ static int int2bcd(int val)
         return(((val / 10) << 4) + (val % 10));
 }
 //Tomohiko Sakamoto:
-
+#if 0
 int dayofweek(void)	/* 0 = Sunday */
 {
         int year=0;
@@ -66,6 +66,20 @@ int dayofweek(void)	/* 0 = Sunday */
 	year -= month < 3;
 	return (year + year/4 - year/100 + year/400 + t[month-1] + day) % 7;
 }
+#else
+int dayofweek(void)    /* 0 = Sunday */
+{
+unsigned int d = day, y = year, m = month;
+//==============================================================================================
+//d, m, y used only to preserve day, year & month vars
+//day, month & year cannot be used as they may be modified returning the wrong date values.
+//==============================================================================================
+
+d = (d+=m<3?y--:y-2,23*m/9+d+4+y/4-y/100+y/400) %7;
+
+return d;
+}
+#endif
 // some temp commands for testing
 
     void cmd_SDEnable(void)

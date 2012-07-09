@@ -368,7 +368,6 @@ int main(void) {
         MMPrintString("\r\n"); // extra line looks better
         Autorun = true;
     }
-
    MMBasicStart(); // run BASIC
 }
 
@@ -1279,7 +1278,7 @@ void _general_exception_handler(void) {
     _excep_code = (_excep_code & 0x0000007C) >> 2;
 
     debughalt(); // Break here when compiling under a Debug build configuration
-    SoftReset(); // this will restart the processor – only works when not in debug
+    SoftReset(); // this will restart the processor ? only works when not in debug
 }
 
 

@@ -175,13 +175,8 @@ ROM USB_DEVICE_DESCRIPTOR device_dsc=
     USB_EP0_BUFF_SIZE,      // Max packet size for EP0, see usb_config.h
 // SPP +
 #ifdef  OLIMEX
-    #ifdef  OLIMEX_DUINOMITE_EMEGA  // for DuinoMite eMega
-        0x15BA,                 // Vendor ID
-        0x0035,                 // Product ID
-    #else   // DuinoMite Mega
-        0x15BA,                 // Vendor ID
-        0x0033,                 // Product ID
-    #endif
+    0x15BA,                 // Vendor ID
+    0x0035,                 // Product ID  - PID edited because USB is now a composite device
 #else
     0x04D8,                 // Vendor ID
     0x0057,                 // Product ID
