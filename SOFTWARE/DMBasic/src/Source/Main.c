@@ -450,7 +450,12 @@ void __ISR(_TIMER_1_VECTOR, ipl4) T1Interrupt(void) {
     int i, numBytesRead;
 
     if(S.UsbEnable ==1){
-    if (U1OTGSTAT & 1) { // is there 5V on the USB?
+#ifdef  OLIMEX  // edit SPP
+    if (1)  // skip the voltage check due to the USB OTG issue
+#else
+    if (U1OTGSTAT & 1)  // is there 5V on the USB? (original)
+#endif
+    { 
         USBDeviceTasks(); // do any USB work
         if (USBGetDeviceState() == DETACHED_STATE) // 5V on the USB but nothing happening
             PR1 = 500 * ((BUSFREQ / 8) / 1000000) - 1; // probably using USB power only (poll every 500 uSec)
