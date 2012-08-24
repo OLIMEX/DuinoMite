@@ -451,9 +451,9 @@ void __ISR(_TIMER_1_VECTOR, ipl4) T1Interrupt(void) {
 
     if(S.UsbEnable ==1){
 #ifdef  OLIMEX  // edit SPP
-    if (1)  // skip the voltage check due to the USB OTG issue
+    if (U1OTGSTAT & 8)  // is there 2.3V on the USB?    Thanks to Stefan Kouba (Microchip support) for suggestion!
 #else
-    if (U1OTGSTAT & 1)  // is there 5V on the USB? (original)
+    if (U1OTGSTAT & 1)  // is there 5V on the USB?
 #endif
     { 
         USBDeviceTasks(); // do any USB work
