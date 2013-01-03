@@ -103,79 +103,89 @@ int zero[] = {0, 0, 0};
 /**************************************************************************************************
 Initialise the video components
 ***************************************************************************************************/
-void initVideo( void) {
-	// setup the I/O pins used by the video
+void initVideo( void)
+{
+    // setup the I/O pins used by the video
 #ifdef MAXIMITE
-        CNCONbits.ON = 1;       						// turn on Change Notification module
- 	P_VGA_COMP_PULLUP = P_ON;						// turn on the pullup for pin C14 also called CN0
+    CNCONbits.ON = 1;       						// turn on Change Notification module
+    P_VGA_COMP_PULLUP = P_ON;						// turn on the pullup for pin C14 also called CN0
 #endif
     TRISBbits.TRISB11=1;
     vga = (P_VGA_COMP == P_VGA_SELECT);						// vga will be true if the jumper is NOT there
     P_VIDEO_TRIS = P_OUTPUT;  //P_VIDEO = 1;					// Video output
     P_HORIZ_TRIS = P_OUTPUT;  //P_HORIZ = 1;                                    // Horiz sync output
-    if(vga) P_VERT_TRIS = P_OUTPUT;  //P_VERT_SET_HI;				// Vert sync output used by VGA
+    if(vga)
+        P_VERT_TRIS = P_OUTPUT;  //P_VERT_SET_HI;				// Vert sync output used by VGA
 
-    if(vga) {
-	    VRes = VGA_VRES;
-	    HRes = VGA_HRES;
-		VC[0] = VGA_VSYNC_N;						// setup the table used to count lines
-		VC[1] = VGA_POSTEQ_N;
-		VC[2] = VGA_VRES;
-		VC[3] = VGA_PREEQ_N;
-		// enable the SPI channel which will clock the video data out.  Set master and framing mode.  The last arg sets the speed
-	    SpiChnOpen(P_VIDEO_SPI, SPICON_ON | SPICON_MSTEN |  SPICON_MODE32 | SPICON_FRMEN | SPICON_FRMSYNC | SPICON_FRMPOL, VGA_PIX_T);
-	    // enable the output compare which is used to time the width of the horiz sync pulse
+    if(vga)
+    {
+        VRes = VGA_VRES;
+        HRes = VGA_HRES;
+        VC[0] = VGA_VSYNC_N;						// setup the table used to count lines
+        VC[1] = VGA_POSTEQ_N;
+        VC[2] = VGA_VRES;
+        VC[3] = VGA_PREEQ_N;
+        // enable the SPI channel which will clock the video data out.  Set master and framing mode.  The last arg sets the speed
+        SpiChnOpen(P_VIDEO_SPI, SPICON_ON | SPICON_MSTEN |  SPICON_MODE32 | SPICON_FRMEN | SPICON_FRMSYNC | SPICON_FRMPOL, VGA_PIX_T);
+        // enable the output compare which is used to time the width of the horiz sync pulse
 #ifdef MAXIMITE
-	    OpenOC3(OC_ON | OC_TIMER3_SRC | OC_CONTINUE_PULSE, 0, VGA_HSYNC_T);
+        OpenOC3(OC_ON | OC_TIMER3_SRC | OC_CONTINUE_PULSE, 0, VGA_HSYNC_T);
 #endif
 // SPP +
 #ifdef OLIMEX
-	#ifdef	OLIMEX_DUINOMITE_EMEGA	// patch for eMega
-	    OpenOC3(OC_ON | OC_TIMER3_SRC | OC_CONTINUE_PULSE, 0, VGA_HSYNC_T);
-	#else	// original by Geoff Graham for DuinoMite-Mega
-	    OpenOC5(OC_ON | OC_TIMER3_SRC | OC_CONTINUE_PULSE, 0, VGA_HSYNC_T);
-	#endif
+    #ifdef	OLIMEX_DUINOMITE_EMEGA	// patch for eMega
+        OpenOC3(OC_ON | OC_TIMER3_SRC | OC_CONTINUE_PULSE, 0, VGA_HSYNC_T);
+    #else	// original by Geoff Graham for DuinoMite-Mega
+        OpenOC5(OC_ON | OC_TIMER3_SRC | OC_CONTINUE_PULSE, 0, VGA_HSYNC_T);
+    #endif
 #else
-	    OpenOC3(OC_ON | OC_TIMER3_SRC | OC_CONTINUE_PULSE, 0, VGA_HSYNC_T);
+        OpenOC3(OC_ON | OC_TIMER3_SRC | OC_CONTINUE_PULSE, 0, VGA_HSYNC_T);
 #endif
 // SPP -
-	    // enable timer 3 and set to the horizontal scanning frequency
-	    OpenTimer3( T3_ON | T3_PS_1_1 | T3_SOURCE_INT, VGA_LINE_T-1);
-	} else {	// this is for the composite output and is the same as VGA with timing differences
-	    VRes = S.C_VRES;
-	    HRes = S.C_HRES;
-		VC[0] = S.C_VSYNC_N;
-		VC[1] = S.C_POSTEQ_N;
-		VC[2] = S.C_VRES;
-		VC[3] = S.C_PREEQ_N;
-	    SpiChnOpen(P_VIDEO_SPI, SPICON_ON | SPICON_MSTEN | SPICON_MODE32 | SPICON_FRMEN | SPICON_FRMSYNC | SPICON_FRMPOL, S.C_PIX_T);
+        // enable timer 3 and set to the horizontal scanning frequency
+        OpenTimer3( T3_ON | T3_PS_1_1 | T3_SOURCE_INT, VGA_LINE_T-1);
+    }
+    else
+    {	// this is for the composite output and is the same as VGA with timing differences
+        VRes = S.C_VRES;
+        HRes = S.C_HRES;
+        VC[0] = S.C_VSYNC_N;
+        VC[1] = S.C_POSTEQ_N;
+        VC[2] = S.C_VRES;
+        VC[3] = S.C_PREEQ_N;
+        SpiChnOpen(P_VIDEO_SPI, SPICON_ON | SPICON_MSTEN | SPICON_MODE32 | SPICON_FRMEN | SPICON_FRMSYNC | SPICON_FRMPOL, S.C_PIX_T);
 #ifdef MAXIMITE
-	    OpenOC3(OC_ON | OC_TIMER3_SRC | OC_CONTINUE_PULSE, 0, S.C_HSYNC_T);
+        OpenOC3(OC_ON | OC_TIMER3_SRC | OC_CONTINUE_PULSE, 0, S.C_HSYNC_T);
 #endif
 #ifdef OLIMEX
-	    OpenOC5(OC_ON | OC_TIMER3_SRC | OC_CONTINUE_PULSE, 0, S.C_HSYNC_T);
+    #ifdef	OLIMEX_DUINOMITE_EMEGA	// patch for eMega
+        OpenOC3(OC_ON | OC_TIMER3_SRC | OC_CONTINUE_PULSE, 0, S.C_HSYNC_T);
+    #else
+        OpenOC5(OC_ON | OC_TIMER3_SRC | OC_CONTINUE_PULSE, 0, S.C_HSYNC_T);
+    #endif
 #endif
-	    OpenTimer3(T3_ON | T3_PS_1_1 | T3_SOURCE_INT, S.C_LINE_T-1);
-	}
+        OpenTimer3(T3_ON | T3_PS_1_1 | T3_SOURCE_INT, S.C_LINE_T-1);
+    }
 
-	VState = SV_PREEQ;							// initialise the state machine
-    VCount = 1;                 						// set the count so that the first interrupt will increment the state
+    VState = SV_PREEQ;  // initialise the state machine
+    VCount = 1;         // set the count so that the first interrupt will increment the state
 
-	// setup DMA 1 to send data to SPI channel 2
+    // setup DMA 1 to send data to SPI channel 2
     DmaChnOpen(1, 1, DMA_OPEN_DEFAULT);
     DmaChnSetEventControl(1, DMA_EV_START_IRQ_EN | DMA_EV_START_IRQ(P_SPI_INTERRUPT));
 
     if(vga)
-	    DmaChnSetTxfer(1, (void*)VA, (void *)&P_SPI_INPUT, VGA_HRES/8, 4, 4);
-	else {
-	    DmaChnSetTxfer(1, (void*)zero, (void *)&P_SPI_INPUT, S.C_BLANKPAD, 4, 4);
-		// setup DMA 0 to pump the data from the graphics buffer to the SPI peripheral
-    	DmaChnOpen( 0, 0, DMA_OPEN_DEFAULT);
-    	DmaChnSetEventControl(0, DMA_EV_START_IRQ_EN | DMA_EV_START_IRQ(P_SPI_INTERRUPT));
-	    DmaChnSetTxfer(0, (void*)VA, (void *)&P_SPI_INPUT, S.C_HRES/8 + 6, 4, 4);
-    	// chain DMA 0 so that it will start on completion of the DMA 1 transfer
-    	DmaChnSetControlFlags(0, DMA_CTL_CHAIN_EN | DMA_CTL_CHAIN_DIR);
-	}
+        DmaChnSetTxfer(1, (void*)VA, (void *)&P_SPI_INPUT, VGA_HRES/8, 4, 4);
+    else
+    {
+        DmaChnSetTxfer(1, (void*)zero, (void *)&P_SPI_INPUT, S.C_BLANKPAD, 4, 4);
+        // setup DMA 0 to pump the data from the graphics buffer to the SPI peripheral
+        DmaChnOpen( 0, 0, DMA_OPEN_DEFAULT);
+        DmaChnSetEventControl(0, DMA_EV_START_IRQ_EN | DMA_EV_START_IRQ(P_SPI_INTERRUPT));
+        DmaChnSetTxfer(0, (void*)VA, (void *)&P_SPI_INPUT, S.C_HRES/8 + 6, 4, 4);
+        // chain DMA 0 so that it will start on completion of the DMA 1 transfer
+        DmaChnSetControlFlags(0, DMA_CTL_CHAIN_EN | DMA_CTL_CHAIN_DIR);
+    }
 
     mT3SetIntPriority(7);    							// set priority level 7 for the timer 3 interrupt to use shadow register set
     mT3IntEnable(1);								// Enable Timer3 Interrupt
@@ -198,7 +208,11 @@ void __ISR(_TIMER_3_VECTOR, ipl7) T3Interrupt(void) {
             if(!vga) OC3R = S.C_LINE_T - S.C_HSYNC_T;			        // start the vertical sync pulse for composite
 #endif
 #ifdef OLIMEX
+    #ifdef	OLIMEX_DUINOMITE_EMEGA	// patch for eMega
+            if(!vga) OC3R = S.C_LINE_T - S.C_HSYNC_T;			        // start the vertical sync pulse for composite
+    #else
             if(!vga) OC5R = S.C_LINE_T - S.C_HSYNC_T;			        // start the vertical sync pulse for composite
+    #endif
 #endif
             if(vga) P_VERT_SET_LO;						// start the vertical sync pulse for vga
             break;
@@ -208,7 +222,11 @@ void __ISR(_TIMER_3_VECTOR, ipl7) T3Interrupt(void) {
         	if(!vga) OC3R = S.C_HSYNC_T; 			        	// end of the vertical sync pulse for composite
 #endif
 #ifdef	OLIMEX
+    #ifdef	OLIMEX_DUINOMITE_EMEGA	// patch for eMega
+        	if(!vga) OC3R = S.C_HSYNC_T; 			        	// end of the vertical sync pulse for composite
+    #else
         	if(!vga) OC5R = S.C_HSYNC_T; 			        	// end of the vertical sync pulse for composite
+    #endif
 #endif
             if(vga) P_VERT_SET_HI;						// end of the vertical sync pulse for vga
             break;

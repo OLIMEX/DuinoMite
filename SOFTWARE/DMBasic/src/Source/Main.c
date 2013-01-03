@@ -132,7 +132,7 @@ TIMER NBR    DESCRIPTION                 INTERRUPT
 Configuration defines
  ******************************************************************************************************************************/
 #define USB_RX_BUFFER_SIZE	128
-#define USB_TX_BUFFER_SIZE	64
+#define USB_TX_BUFFER_SIZE	256
 
 
 
