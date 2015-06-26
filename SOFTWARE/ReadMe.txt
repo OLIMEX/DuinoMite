@@ -1,7 +1,0 @@
-Duinomite eMega bootloader is placed in "../HID-BOOTLOADER/HIDBootloaderOlimex DuinoMite eMega". You can program the board with this hex file using PicKit3 or another programmer via MPLAB or MPLABX.
-
-Then you can program with DM basic project without PicKit3. In order to do this you have to start the bootloader mode: plug an USB cable and reset the board while holding "BUT" button. Doing so the yellow and green LEDs will blink alternatively (this means the bootloader mode is activated). Then start this exe: "../HID-BOOTLOADER/HIDBootLoader.exe" -> Import Firmware Image (the button with a folder icon or just press ctrl + o) -> select your image. The latest version of the project hex is placed in "../FIRMWARE/" for both Mega and eMega boards.
-
-Alternatively you can program the board with both bootloader and firmware hex file at once using PicKit3 (or another programmer) and MPLAB/MPLABX by importing "../HID-BOOTLOADER/HIDBootloaderOlimex DuinoMite eMega + MMBasic (<date>).hex" where date is project build date. By default the board is programmed with it so you can use the board without PicKit3 unless the bootloader is erased.
-
-Note: Since the firmware is updated periodically it is recommended to reprogram the board using the HIDBootLoader.exe and bootloader mode with the latest hex file.
