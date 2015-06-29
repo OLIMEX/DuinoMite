@@ -12,7 +12,7 @@ In most cases you can recover the software of a Duinomite board via built-in boo
 
 Start the board in bootloader mode: plug an USB cable and reset the board while holding "BUT" button. Doing so the yellow and green LEDs will blink alternatively (this means the bootloader mode is activated). 
 
-Then start the executable HIDBootLoader.exe located in HID-BOOTLOADER folder. Select "Import Firmware Image" (the button with a folder icon or just press ctrl + o) -> select your image. The latest version of the project hex is placed in HID-BOOTLDER folder for both EMEGA and the rest of the DUINOMITE boards.
+Then start the executable HIDBootLoader.exe located in HID-BOOTLOADER folder. Select "Import Firmware Image" (the button with a folder icon or just press ctrl + o) -> select your image. The latest version of the project hex is placed in FIRMWARE folder for both EMEGA and the rest of the DUINOMITE boards.
 
 ##How to program DM basic project with PIC programmer tool?##
 
