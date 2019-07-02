@@ -1,4 +1,4 @@
-# Duinomite Basic - Open Source Basic Language Interpreter
+Duinomite Basic - Open Source Basic Language Interpreter
 
 Copyright 2012 OLIMEX Ltd - http://www.olimex.com
 
@@ -7,13 +7,13 @@ Port to DuinoMite platform by Ken Segler - http://www.kenseglerdesigns.com
 I2C libraries made by Gerard Sexton
 CAN libraries made by Frank Voorburg - http://www.feaser.com
 
-## Licensee:
+Licensee:
 
 For Software: GPLv3
 For Hardware: CC-BY-SA 3.0
 For Documentation: CC-BY-SA 3.0
 
-## Supported hardware: DuinoMite, DuinoMite-Mini, DuinoMite-Mega, DuinoMite-eMega, PIC32-T795
+Supported hardware: DuinoMite, DuinoMite-Mini, DuinoMite-Mega, DuinoMite-eMega, PIC32-T795
 
 To compile this project you need to install:
 MPLAB C 32 version 1.11b (will not compile on 2.0 and later versions!)
